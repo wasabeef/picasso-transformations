@@ -39,6 +39,17 @@ Picasso.with(mContext).load(R.drawable.demo)
         .transform(transformation).into((ImageView) findViewById(R.id.image));
 ```
 
+## Advanced Step 3
+
+You can set a multiple transformations.
+
+```java
+Picasso.with(mContext).load(R.drawable.demo)
+                .transform(transformation)
+                .transform(new CropCircleTransformation())
+                .into(holder.image);
+```
+
 ## Transformations
 
 ### Crop

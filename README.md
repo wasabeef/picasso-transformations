@@ -32,12 +32,11 @@ dependencies {
 
 ## Step 2
 
-Set Glide Transform.
+Set Picasso Transform.
 
 ```java
-Glide.with(this).load(R.drawable.demo)
-        .bitmapTransform(new BlurTransformation(this, Glide.get(this).getBitmapPool()))
-        .into((ImageView) findViewById(R.id.image));
+Picasso.with(mContext).load(R.drawable.demo)
+        .transform(transformation).into((ImageView) findViewById(R.id.image));
 ```
 
 ## Transformations

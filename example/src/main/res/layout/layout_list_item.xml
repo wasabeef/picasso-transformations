@@ -18,6 +18,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/image"
         android:layout_centerHorizontal="true"
-        android:textColor="@android:color/white"/>
+        android:textColor="@android:color/black"/>
 
 </RelativeLayout>

@@ -9,7 +9,7 @@ An Android transformation library providing a variety of image transformations f
 Please feel free to use this.
 
 
-#### Are you using Glide?
+#### Are you using the Glide?
 [Glide Transformations](https://github.com/wasabeef/glide-transformations)
  
 # Demo

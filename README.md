@@ -23,10 +23,12 @@ Please feel free to use this.
 ```groovy
 repositories {
     jcenter()
+    mavenCentral()  // GPUImage for Android
 }
 
 dependencies {
-    compile 'jp.wasabeef:picasso-transformations:1.0.0'
+    compile 'jp.wasabeef:picasso-transformations:1.0.1'
+    compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.2.3'
 }
 ```
 
@@ -48,6 +50,21 @@ Picasso.with(mContext).load(R.drawable.demo)
                 .transform(transformation)
                 .transform(new CropCircleTransformation())
                 .into(holder.image);
+```
+
+## Step 4
+
+If you are using `BlurTransformation`.
+
+```groovy
+android {
+    ...
+    defaultConfig {
+        ...
+        renderscriptTargetApi 21
+        renderscriptSupportModeEnabled true
+    }
+}
 ```
 
 ## Transformations

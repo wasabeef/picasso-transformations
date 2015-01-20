@@ -1,27 +1,61 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion "21.1.2"
+    compileSdkVersion COMPILE_SDK_VERSION as int
+    buildToolsVersion BUILD_TOOLS_VERSION
 
     defaultConfig {
-        applicationId "jp.wasabeef.example.picasso"
-        minSdkVersion 11
-        targetSdkVersion 21
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion MIN_SDK_VERSION as int
+        targetSdkVersion TARGET_SDK_VERSION as int
+        versionCode VERSION_CODE as int
+        versionName VERSION_NAME
+        renderscriptTargetApi RENDERSCRIPT_TARGET_API as int
+        renderscriptSupportModeEnabled true
     }
-    buildTypes {
+
+    signingConfigs {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            storeFile file(keyStoreProperty)
+            keyAlias keyAliasProperty
+            storePassword keyStorePasswordProperty
+            keyPassword keyAliasPasswordProperty
+        }
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            zipAlignEnabled true
+        }
+        release {
+            debuggable false
+            zipAlignEnabled true
+            signingConfig signingConfigs.release
         }
     }
 }
 
+def getKeyStoreProperty() {
+    return hasProperty('WASABEEF_KEYSTORE') ? WASABEEF_KEYSTORE : "debug.keystore"
+}
+
+def getKeyAliasProperty() {
+    return hasProperty('WASABEEF_KEYALIAS') ? WASABEEF_KEYALIAS : "android"
+}
+
+def getKeyStorePasswordProperty() {
+    return hasProperty('WASABEEF_KEYSTOREPASSWORD') ? WASABEEF_KEYSTOREPASSWORD : "androiddebugkey"
+}
+    
+def getKeyAliasPasswordProperty() {
+    return hasProperty('WASABEEF_KEYALIASPASSWORD') ? WASABEEF_KEYALIASPASSWORD : "android"
+}
+
 dependencies {
     compile project(':transformations')
+//    compile 'jp.wasabeef:picasso-transformations:1.0.1'
+    compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.2.3'
     compile 'com.android.support:appcompat-v7:+'
     compile 'com.android.support:recyclerview-v7:21.+'
-    compile 'com.squareup.picasso:picasso:2.+'
+    compile 'com.squareup.picasso:picasso:2.4.0'
 }

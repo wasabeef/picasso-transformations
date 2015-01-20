@@ -1,5 +1,6 @@
 Picasso Transformations
 ======================
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-picasso--transformations-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1372)
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 [![Download](https://api.bintray.com/packages/wasabeef/maven/picasso-transformations/images/download.svg)](https://bintray.com/wasabeef/maven/picasso-transformations/_latestVersion)
 
@@ -7,6 +8,10 @@ An Android transformation library providing a variety of image transformations f
 
 Please feel free to use this.
 
+
+#### Are you using Glide?
+[Glide Transformations](https://github.com/wasabeef/glide-transformations)
+ 
 # Demo
 
 ### Original Image
@@ -92,7 +97,7 @@ Daichi Furiya (Wasabeef) - <dadadada.chop@gmail.com>
 
 <a href="https://twitter.com/wasabeef_jp">
 <img alt="Follow me on Twitter"
-src="https://raw.githubusercontent.com/wasabeef/wasabeef.github.io/master/art/twitter.png" width="75"/>
+src="https://raw.githubusercontent.com/wasabeef/art/master/twitter.png" width="75"/>
 </a>
 
 Thanks

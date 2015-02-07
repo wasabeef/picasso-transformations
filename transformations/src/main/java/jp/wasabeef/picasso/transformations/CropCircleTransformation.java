@@ -39,9 +39,11 @@ public class CropCircleTransformation implements Transformation {
         Paint paint = new Paint();
         BitmapShader shader = new BitmapShader(source, BitmapShader.TileMode.CLAMP,
                 BitmapShader.TileMode.CLAMP);
-        Matrix matrix = new Matrix();
-        matrix.setTranslate(-width, -height);
-        shader.setLocalMatrix(matrix);
+        if (width != 0 || height != 0) { // source isn't square, move viewport to centre
+            Matrix matrix = new Matrix();
+            matrix.setTranslate(-width, -height);
+            shader.setLocalMatrix(matrix);
+        }
         paint.setShader(shader);
         paint.setAntiAlias(true);
 

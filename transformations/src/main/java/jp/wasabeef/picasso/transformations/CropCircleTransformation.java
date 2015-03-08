@@ -16,13 +16,13 @@ package jp.wasabeef.picasso.transformations;
  * limitations under the License.
  */
 
+import com.squareup.picasso.Transformation;
+
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
-
-import com.squareup.picasso.Transformation;
 
 public class CropCircleTransformation implements Transformation {
 
@@ -39,7 +39,8 @@ public class CropCircleTransformation implements Transformation {
         Paint paint = new Paint();
         BitmapShader shader = new BitmapShader(source, BitmapShader.TileMode.CLAMP,
                 BitmapShader.TileMode.CLAMP);
-        if (width != 0 || height != 0) { // source isn't square, move viewport to centre
+        if (width != 0 || height != 0) {
+            // source isn't square, move viewport to centre
             Matrix matrix = new Matrix();
             matrix.setTranslate(-width, -height);
             shader.setLocalMatrix(matrix);

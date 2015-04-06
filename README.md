@@ -94,7 +94,7 @@ android {
 Applications using Picasso Transformations
 ---
 
-Please [ping](dadadada.chop@gmail.com) me or send a pull request if you would like to be added here.
+Please [ping](mailto:dadadada.chop@gmail.com) me or send a pull request if you would like to be added here.
 
 Icon | Application
 ------------ | -------------

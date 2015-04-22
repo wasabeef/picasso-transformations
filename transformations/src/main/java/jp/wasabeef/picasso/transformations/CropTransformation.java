@@ -76,20 +76,20 @@ public class CropTransformation implements Transformation {
         return "CropTransformation(width=" + mWidth + ", height=" + mHeight + ")";
     }
 
-	private float getTop(float scaledHeight) {
-		switch (mCropType) {
-			case TOP:
-				return 0;
-			case CENTER:
-				return (mHeight - scaledHeight) / 2;
-			case BOTTOM:
-				return mHeight - scaledHeight;
-			default:
-				return 0;
-		}
+    private float getTop(float scaledHeight) {
+        switch (mCropType) {
+		case TOP:
+			return 0;
+		case CENTER:
+			return (mHeight - scaledHeight) / 2;
+		case BOTTOM:
+			return mHeight - scaledHeight;
+		default:
+			return 0;
 	}
+    }
 
-	public enum CropType {
+    public enum CropType {
 		TOP,
 		CENTER,
 		BOTTOM

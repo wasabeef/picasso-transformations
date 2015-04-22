@@ -73,10 +73,10 @@ public class CropTransformation implements Transformation {
 
     @Override
     public String key() {
-        return "CropTransformation(width=" + mWidth + ", height=" + mHeight + ")";
+        return "CropTransformation(width=" + mWidth + ", height=" + mHeight + ", cropType=" + mCropType + ")";
     }
 
-    private float getTop(float scaledHeight) {
+	private float getTop(float scaledHeight) {
         switch (mCropType) {
 		case TOP:
 			return 0;
@@ -86,10 +86,10 @@ public class CropTransformation implements Transformation {
 			return mHeight - scaledHeight;
 		default:
 			return 0;
-	    }
+        }
     }
 
-    public enum CropType {
+	public enum CropType {
 		TOP,
 		CENTER,
 		BOTTOM

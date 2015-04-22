@@ -86,7 +86,7 @@ public class CropTransformation implements Transformation {
 			return mHeight - scaledHeight;
 		default:
 			return 0;
-	}
+	    }
     }
 
     public enum CropType {

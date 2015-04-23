@@ -37,12 +37,12 @@ public class CropTransformation implements Transformation {
         mWidth = width;
         mHeight = height;
     }
-    
+
     public CropTransformation(int width, int height, CropType cropType) {
-		mWidth = width;
-		mHeight = height;
-		mCropType = cropType;
-	}
+        mWidth = width;
+        mHeight = height;
+        mCropType = cropType;
+    }
 
     @Override
     public Bitmap transform(Bitmap source) {
@@ -73,25 +73,26 @@ public class CropTransformation implements Transformation {
 
     @Override
     public String key() {
-        return "CropTransformation(width=" + mWidth + ", height=" + mHeight + ", cropType=" + mCropType + ")";
+        return "CropTransformation(width=" + mWidth + ", height=" + mHeight + ", cropType="
+                + mCropType + ")";
     }
 
-	private float getTop(float scaledHeight) {
+    private float getTop(float scaledHeight) {
         switch (mCropType) {
-		case TOP:
-			return 0;
-		case CENTER:
-			return (mHeight - scaledHeight) / 2;
-		case BOTTOM:
-			return mHeight - scaledHeight;
-		default:
-			return 0;
+            case TOP:
+                return 0;
+            case CENTER:
+                return (mHeight - scaledHeight) / 2;
+            case BOTTOM:
+                return mHeight - scaledHeight;
+            default:
+                return 0;
         }
     }
 
-	public enum CropType {
-		TOP,
-		CENTER,
-		BOTTOM
-	}
+    public enum CropType {
+        TOP,
+        CENTER,
+        BOTTOM
+    }
 }

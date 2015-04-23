@@ -43,7 +43,9 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
     private List<Type> mDataSet;
 
     enum Type {
-        Crop,
+        CropTop,
+        CropCenter,
+        CropBottom,
         CropSquare,
         CropCircle,
         ColorFilter,
@@ -78,8 +80,15 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
     public void onBindViewHolder(MainAdapter.ViewHolder holder, int position) {
         Transformation transformation = null;
         switch (mDataSet.get(position)) {
-            case Crop:
+            case CropTop:
+                transformation = new CropTransformation(300, 100, CropTransformation.CropType.TOP);
+                break;
+            case CropCenter:
                 transformation = new CropTransformation(300, 100);
+                break;
+            case CropBottom:
+                transformation =
+                        new CropTransformation(300, 100, CropTransformation.CropType.BOTTOM);
                 break;
             case CropSquare:
                 transformation = new CropSquareTransformation();

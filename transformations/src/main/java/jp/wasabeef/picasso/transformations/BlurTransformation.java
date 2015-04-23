@@ -39,7 +39,7 @@ public class BlurTransformation implements Transformation {
 
     public BlurTransformation(Context context, int radius) {
         mContext = context;
-        this.mRadius = radius;
+        mRadius = radius;
     }
 
     @Override

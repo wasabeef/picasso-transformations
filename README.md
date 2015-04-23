@@ -32,7 +32,7 @@ repositories {
 }
 
 dependencies {
-    compile 'jp.wasabeef:picasso-transformations:1.0.2@aar'
+    compile 'jp.wasabeef:picasso-transformations:1.0.3@aar'
     compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.2.3@aar'
 }
 ```
@@ -75,7 +75,7 @@ android {
 ## Transformations
 
 ### Crop
-`CropTransformation`, `CropCircleTransformation`, `CropSquareTransformation`
+`CropTransformation(Top, Center, Bottom)`, `CropCircleTransformation`, `CropSquareTransformation`
 
 ### Color
 `ColorFilterTransformation`, `GrayscaleTransformation`

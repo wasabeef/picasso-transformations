@@ -26,14 +26,12 @@ public class CropTransformation implements Transformation {
 
     private int mWidth;
     private int mHeight;
-    private CropType mCropType;
+    private CropType mCropType = CropType.CENTER;
 
     public CropTransformation() {
-        mCropType = CropType.CENTER;
     }
 
     public CropTransformation(int width, int height) {
-        this();
         mWidth = width;
         mHeight = height;
     }

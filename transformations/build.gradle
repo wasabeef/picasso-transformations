@@ -16,7 +16,7 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.squareup.picasso:picasso:2.4.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.2.3'
 }
 

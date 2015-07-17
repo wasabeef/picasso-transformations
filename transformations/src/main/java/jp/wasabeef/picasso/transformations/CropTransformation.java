@@ -44,12 +44,8 @@ public class CropTransformation implements Transformation {
 
     @Override
     public Bitmap transform(Bitmap source) {
-        if (mWidth == 0) {
-            mWidth = source.getWidth();
-        }
-        if (mHeight == 0) {
-            mHeight = source.getHeight();
-        }
+        mWidth = mWidth == 0 ? source.getWidth() : mWidth;
+        mHeight = mHeight == 0 ? source.getHeight() : mHeight;
 
         float scaleX = (float) mWidth / source.getWidth();
         float scaleY = (float) mHeight / source.getHeight();

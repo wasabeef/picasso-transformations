@@ -55,7 +55,7 @@ dependencies {
     compile project(':transformations')
 //    compile 'jp.wasabeef:picasso-transformations:1.0.1'
     compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.2.3'
-    compile 'com.android.support:appcompat-v7:22.1.1'
-    compile 'com.android.support:recyclerview-v7:22.1.1'
+    compile 'com.android.support:appcompat-v7:22.2.0'
+    compile 'com.android.support:recyclerview-v7:22.2.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
 }

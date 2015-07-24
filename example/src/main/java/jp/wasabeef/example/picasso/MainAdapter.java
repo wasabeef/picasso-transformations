@@ -106,7 +106,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
                 transformation = new RoundedCornersTransformation(100, 0);
                 break;
             case Blur:
-                transformation = new BlurTransformation(mContext, 10);
+                transformation = new BlurTransformation(mContext, 25, 4);
                 break;
             case Toon:
                 transformation = new ToonFilterTransformation(mContext);

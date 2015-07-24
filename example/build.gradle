@@ -46,16 +46,15 @@ def getKeyAliasProperty() {
 def getKeyStorePasswordProperty() {
     return hasProperty('WASABEEF_KEYSTOREPASSWORD') ? WASABEEF_KEYSTOREPASSWORD : "androiddebugkey"
 }
-    
+
 def getKeyAliasPasswordProperty() {
     return hasProperty('WASABEEF_KEYALIASPASSWORD') ? WASABEEF_KEYALIASPASSWORD : "android"
 }
 
 dependencies {
     compile project(':transformations')
-//    compile 'jp.wasabeef:picasso-transformations:1.0.1'
-    compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.2.3'
-    compile 'com.android.support:appcompat-v7:22.2.0'
-    compile 'com.android.support:recyclerview-v7:22.2.0'
-    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile "com.squareup.picasso:picasso:${PICASSO_VERSION}"
+    compile "jp.co.cyberagent.android.gpuimage:gpuimage-library:${GPUIMAGE_VERSION}"
+    compile "com.android.support:appcompat-v7:${SUPPORT_PACKAGE_VERSION}"
+    compile "com.android.support:recyclerview-v7:${SUPPORT_PACKAGE_VERSION}"
 }

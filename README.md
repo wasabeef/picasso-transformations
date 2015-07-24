@@ -32,7 +32,7 @@ repositories {
 }
 
 dependencies {
-    compile 'jp.wasabeef:picasso-transformations:1.0.3@aar'
+    compile 'jp.wasabeef:picasso-transformations:1.0.4@aar'
     compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.2.3@aar'
 }
 ```
@@ -66,7 +66,7 @@ android {
     ...
     defaultConfig {
         ...
-        renderscriptTargetApi 21
+        renderscriptTargetApi 22
         renderscriptSupportModeEnabled true
     }
 }

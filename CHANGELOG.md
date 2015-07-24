@@ -1,6 +1,16 @@
 Change Log
 ==========
 
+Version 1.0.5 *(2015-07-24)*
+----------------------------
+
+add DownSampling to BlurTransform
+
+Version 1.0.4 *(2015-04-28)*
+----------------------------
+
+update support-library
+
 Version 1.0.3 *(2015-04-23)*
 ----------------------------
 

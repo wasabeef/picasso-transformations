@@ -32,8 +32,8 @@ repositories {
 }
 
 dependencies {
-    compile 'jp.wasabeef:picasso-transformations:1.0.4@aar'
-    compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.2.3@aar'
+    compile 'jp.wasabeef:picasso-transformations:1.0.5'
+    compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.2.3'
 }
 ```
 

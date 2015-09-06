@@ -16,46 +16,42 @@ package jp.wasabeef.picasso.transformations.gpu;
  * limitations under the License.
  */
 
-import com.squareup.picasso.Transformation;
-
 import android.content.Context;
 import android.graphics.Bitmap;
-
+import com.squareup.picasso.Transformation;
 import jp.co.cyberagent.android.gpuimage.GPUImage;
 import jp.co.cyberagent.android.gpuimage.GPUImagePixelationFilter;
 
 public class PixelationFilterTransformation implements Transformation {
 
-    private Context mContext;
+  private Context mContext;
 
-    private GPUImagePixelationFilter mFilter = new GPUImagePixelationFilter();
-    private float mPixel;
+  private GPUImagePixelationFilter mFilter = new GPUImagePixelationFilter();
+  private float mPixel;
 
-    public PixelationFilterTransformation(Context context) {
-        mContext = context;
-    }
+  public PixelationFilterTransformation(Context context) {
+    mContext = context;
+  }
 
-    public PixelationFilterTransformation(Context context, float pixel) {
-        mContext = context;
-        mPixel = pixel;
-        mFilter.setPixel(mPixel);
-    }
+  public PixelationFilterTransformation(Context context, float pixel) {
+    mContext = context;
+    mPixel = pixel;
+    mFilter.setPixel(mPixel);
+  }
 
-    @Override
-    public Bitmap transform(Bitmap source) {
+  @Override public Bitmap transform(Bitmap source) {
 
-        GPUImage gpuImage = new GPUImage(mContext);
-        gpuImage.setImage(source);
-        gpuImage.setFilter(mFilter);
-        Bitmap bitmap = gpuImage.getBitmapWithFilterApplied();
+    GPUImage gpuImage = new GPUImage(mContext);
+    gpuImage.setImage(source);
+    gpuImage.setFilter(mFilter);
+    Bitmap bitmap = gpuImage.getBitmapWithFilterApplied();
 
-        source.recycle();
+    source.recycle();
 
-        return bitmap;
-    }
+    return bitmap;
+  }
 
-    @Override
-    public String key() {
-        return "PixelationFilterTransformation(pixel=" + mPixel + ")";
-    }
+  @Override public String key() {
+    return "PixelationFilterTransformation(pixel=" + mPixel + ")";
+  }
 }

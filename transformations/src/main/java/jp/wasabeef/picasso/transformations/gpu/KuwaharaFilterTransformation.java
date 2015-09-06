@@ -16,11 +16,9 @@ package jp.wasabeef.picasso.transformations.gpu;
  * limitations under the License.
  */
 
-import com.squareup.picasso.Transformation;
-
 import android.content.Context;
 import android.graphics.Bitmap;
-
+import com.squareup.picasso.Transformation;
 import jp.co.cyberagent.android.gpuimage.GPUImage;
 import jp.co.cyberagent.android.gpuimage.GPUImageKuwaharaFilter;
 
@@ -30,36 +28,34 @@ import jp.co.cyberagent.android.gpuimage.GPUImageKuwaharaFilter;
  */
 public class KuwaharaFilterTransformation implements Transformation {
 
-    private Context mContext;
+  private Context mContext;
 
-    private GPUImageKuwaharaFilter mFilter = new GPUImageKuwaharaFilter();
-    private int mRadius;
+  private GPUImageKuwaharaFilter mFilter = new GPUImageKuwaharaFilter();
+  private int mRadius;
 
-    public KuwaharaFilterTransformation(Context context) {
-        mContext = context;
-    }
+  public KuwaharaFilterTransformation(Context context) {
+    mContext = context;
+  }
 
-    public KuwaharaFilterTransformation(Context context, int radius) {
-        mContext = context;
-        mRadius = radius;
-        mFilter.setRadius(mRadius);
-    }
+  public KuwaharaFilterTransformation(Context context, int radius) {
+    mContext = context;
+    mRadius = radius;
+    mFilter.setRadius(mRadius);
+  }
 
-    @Override
-    public Bitmap transform(Bitmap source) {
+  @Override public Bitmap transform(Bitmap source) {
 
-        GPUImage gpuImage = new GPUImage(mContext);
-        gpuImage.setImage(source);
-        gpuImage.setFilter(mFilter);
-        Bitmap bitmap = gpuImage.getBitmapWithFilterApplied();
+    GPUImage gpuImage = new GPUImage(mContext);
+    gpuImage.setImage(source);
+    gpuImage.setFilter(mFilter);
+    Bitmap bitmap = gpuImage.getBitmapWithFilterApplied();
 
-        source.recycle();
+    source.recycle();
 
-        return bitmap;
-    }
+    return bitmap;
+  }
 
-    @Override
-    public String key() {
-        return "KuwaharaFilterTransformation(radius=" + mRadius + ")";
-    }
+  @Override public String key() {
+    return "KuwaharaFilterTransformation(radius=" + mRadius + ")";
+  }
 }

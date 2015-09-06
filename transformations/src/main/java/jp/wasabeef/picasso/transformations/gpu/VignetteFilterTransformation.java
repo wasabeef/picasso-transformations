@@ -16,14 +16,11 @@ package jp.wasabeef.picasso.transformations.gpu;
  * limitations under the License.
  */
 
-import com.squareup.picasso.Transformation;
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.PointF;
-
+import com.squareup.picasso.Transformation;
 import java.util.Arrays;
-
 import jp.co.cyberagent.android.gpuimage.GPUImage;
 import jp.co.cyberagent.android.gpuimage.GPUImageVignetteFilter;
 
@@ -34,50 +31,47 @@ import jp.co.cyberagent.android.gpuimage.GPUImageVignetteFilter;
  */
 public class VignetteFilterTransformation implements Transformation {
 
-    private Context mContext;
+  private Context mContext;
 
-    private GPUImageVignetteFilter mFilter = new GPUImageVignetteFilter();
-    private PointF mCenter;
-    private float[] mVignetteColor;
-    private float mVignetteStart;
-    private float mVignetteEnd;
+  private GPUImageVignetteFilter mFilter = new GPUImageVignetteFilter();
+  private PointF mCenter;
+  private float[] mVignetteColor;
+  private float mVignetteStart;
+  private float mVignetteEnd;
 
+  public VignetteFilterTransformation(Context context) {
+    mContext = context;
+    mCenter = new PointF();
+  }
 
-    public VignetteFilterTransformation(Context context) {
-        mContext = context;
-        mCenter = new PointF();
-    }
+  public VignetteFilterTransformation(Context context, PointF center, float[] color, float start,
+      float end) {
+    mContext = context;
+    mCenter = center;
+    mVignetteColor = color;
+    mVignetteStart = start;
+    mVignetteEnd = end;
+    mFilter.setVignetteCenter(mCenter);
+    mFilter.setVignetteColor(mVignetteColor);
+    mFilter.setVignetteStart(mVignetteStart);
+    mFilter.setVignetteEnd(mVignetteEnd);
+  }
 
-    public VignetteFilterTransformation(Context context,
-            PointF center, float[] color, float start, float end) {
-        mContext = context;
-        mCenter = center;
-        mVignetteColor = color;
-        mVignetteStart = start;
-        mVignetteEnd = end;
-        mFilter.setVignetteCenter(mCenter);
-        mFilter.setVignetteColor(mVignetteColor);
-        mFilter.setVignetteStart(mVignetteStart);
-        mFilter.setVignetteEnd(mVignetteEnd);
-    }
+  @Override public Bitmap transform(Bitmap source) {
 
-    @Override
-    public Bitmap transform(Bitmap source) {
+    GPUImage gpuImage = new GPUImage(mContext);
+    gpuImage.setImage(source);
+    gpuImage.setFilter(mFilter);
+    Bitmap bitmap = gpuImage.getBitmapWithFilterApplied();
 
-        GPUImage gpuImage = new GPUImage(mContext);
-        gpuImage.setImage(source);
-        gpuImage.setFilter(mFilter);
-        Bitmap bitmap = gpuImage.getBitmapWithFilterApplied();
+    source.recycle();
 
-        source.recycle();
+    return bitmap;
+  }
 
-        return bitmap;
-    }
-
-    @Override
-    public String key() {
-        return "VignetteFilterTransformation(center=" + mCenter.toString() +
-                ",color=" + Arrays.toString(mVignetteColor) +
-                ",start=" + mVignetteStart + ",end=" + mVignetteEnd + ")";
-    }
+  @Override public String key() {
+    return "VignetteFilterTransformation(center=" + mCenter.toString() +
+        ",color=" + Arrays.toString(mVignetteColor) +
+        ",start=" + mVignetteStart + ",end=" + mVignetteEnd + ")";
+  }
 }

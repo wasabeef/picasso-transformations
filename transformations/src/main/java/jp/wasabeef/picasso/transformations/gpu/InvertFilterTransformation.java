@@ -16,37 +16,33 @@ package jp.wasabeef.picasso.transformations.gpu;
  * limitations under the License.
  */
 
-import com.squareup.picasso.Transformation;
-
 import android.content.Context;
 import android.graphics.Bitmap;
-
+import com.squareup.picasso.Transformation;
 import jp.co.cyberagent.android.gpuimage.GPUImage;
 import jp.co.cyberagent.android.gpuimage.GPUImageColorInvertFilter;
 
 public class InvertFilterTransformation implements Transformation {
 
-    private Context mContext;
+  private Context mContext;
 
-    public InvertFilterTransformation(Context context) {
-        mContext = context;
-    }
+  public InvertFilterTransformation(Context context) {
+    mContext = context;
+  }
 
-    @Override
-    public Bitmap transform(Bitmap source) {
+  @Override public Bitmap transform(Bitmap source) {
 
-        GPUImage gpuImage = new GPUImage(mContext);
-        gpuImage.setImage(source);
-        gpuImage.setFilter(new GPUImageColorInvertFilter());
-        Bitmap bitmap = gpuImage.getBitmapWithFilterApplied();
+    GPUImage gpuImage = new GPUImage(mContext);
+    gpuImage.setImage(source);
+    gpuImage.setFilter(new GPUImageColorInvertFilter());
+    Bitmap bitmap = gpuImage.getBitmapWithFilterApplied();
 
-        source.recycle();
+    source.recycle();
 
-        return bitmap;
-    }
+    return bitmap;
+  }
 
-    @Override
-    public String key() {
-        return "InvertFilterTransformation()";
-    }
+  @Override public String key() {
+    return "InvertFilterTransformation()";
+  }
 }

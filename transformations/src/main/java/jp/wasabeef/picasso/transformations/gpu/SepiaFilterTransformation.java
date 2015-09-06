@@ -16,46 +16,42 @@ package jp.wasabeef.picasso.transformations.gpu;
  * limitations under the License.
  */
 
-import com.squareup.picasso.Transformation;
-
 import android.content.Context;
 import android.graphics.Bitmap;
-
+import com.squareup.picasso.Transformation;
 import jp.co.cyberagent.android.gpuimage.GPUImage;
 import jp.co.cyberagent.android.gpuimage.GPUImageSepiaFilter;
 
 public class SepiaFilterTransformation implements Transformation {
 
-    private Context mContext;
+  private Context mContext;
 
-    private GPUImageSepiaFilter mFilter = new GPUImageSepiaFilter();
-    private float mIntensity;
+  private GPUImageSepiaFilter mFilter = new GPUImageSepiaFilter();
+  private float mIntensity;
 
-    public SepiaFilterTransformation(Context context) {
-        mContext = context;
-    }
+  public SepiaFilterTransformation(Context context) {
+    mContext = context;
+  }
 
-    public SepiaFilterTransformation(Context context, float intensity) {
-        mContext = context;
-        mIntensity = intensity;
-        mFilter.setIntensity(mIntensity);
-    }
+  public SepiaFilterTransformation(Context context, float intensity) {
+    mContext = context;
+    mIntensity = intensity;
+    mFilter.setIntensity(mIntensity);
+  }
 
-    @Override
-    public Bitmap transform(Bitmap source) {
+  @Override public Bitmap transform(Bitmap source) {
 
-        GPUImage gpuImage = new GPUImage(mContext);
-        gpuImage.setImage(source);
-        gpuImage.setFilter(mFilter);
-        Bitmap bitmap = gpuImage.getBitmapWithFilterApplied();
+    GPUImage gpuImage = new GPUImage(mContext);
+    gpuImage.setImage(source);
+    gpuImage.setFilter(mFilter);
+    Bitmap bitmap = gpuImage.getBitmapWithFilterApplied();
 
-        source.recycle();
+    source.recycle();
 
-        return bitmap;
-    }
+    return bitmap;
+  }
 
-    @Override
-    public String key() {
-        return "SepiaFilterTransformation(intensity=" + mIntensity + ")";
-    }
+  @Override public String key() {
+    return "SepiaFilterTransformation(intensity=" + mIntensity + ")";
+  }
 }

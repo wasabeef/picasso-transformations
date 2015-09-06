@@ -16,60 +16,56 @@ package jp.wasabeef.picasso.transformations.gpu;
  * limitations under the License.
  */
 
-import com.squareup.picasso.Transformation;
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.PointF;
-
+import com.squareup.picasso.Transformation;
 import jp.co.cyberagent.android.gpuimage.GPUImage;
 import jp.co.cyberagent.android.gpuimage.GPUImageSwirlFilter;
 
 public class SwirlFilterTransformation implements Transformation {
 
-    private Context mContext;
+  private Context mContext;
 
-    private GPUImageSwirlFilter mFilter = new GPUImageSwirlFilter();
-    private float mRadius;
-    private float mAngle;
-    private PointF mCenter;
+  private GPUImageSwirlFilter mFilter = new GPUImageSwirlFilter();
+  private float mRadius;
+  private float mAngle;
+  private PointF mCenter;
 
-    public SwirlFilterTransformation(Context context) {
-        mContext = context;
-        mCenter = new PointF();
-    }
+  public SwirlFilterTransformation(Context context) {
+    mContext = context;
+    mCenter = new PointF();
+  }
 
-    /**
-     * @param radius from 0.0 to 1.0, default 0.5
-     * @param angle  minimum 0.0, default 1.0
-     * @param center default (0.5, 0.5)
-     */
-    public SwirlFilterTransformation(Context context, float radius, float angle, PointF center) {
-        mContext = context;
-        mRadius = radius;
-        mAngle = angle;
-        mCenter = center;
-        mFilter.setRadius(mRadius);
-        mFilter.setAngle(mAngle);
-        mFilter.setCenter(mCenter);
-    }
+  /**
+   * @param radius from 0.0 to 1.0, default 0.5
+   * @param angle minimum 0.0, default 1.0
+   * @param center default (0.5, 0.5)
+   */
+  public SwirlFilterTransformation(Context context, float radius, float angle, PointF center) {
+    mContext = context;
+    mRadius = radius;
+    mAngle = angle;
+    mCenter = center;
+    mFilter.setRadius(mRadius);
+    mFilter.setAngle(mAngle);
+    mFilter.setCenter(mCenter);
+  }
 
-    @Override
-    public Bitmap transform(Bitmap source) {
+  @Override public Bitmap transform(Bitmap source) {
 
-        GPUImage gpuImage = new GPUImage(mContext);
-        gpuImage.setImage(source);
-        gpuImage.setFilter(mFilter);
-        Bitmap bitmap = gpuImage.getBitmapWithFilterApplied();
+    GPUImage gpuImage = new GPUImage(mContext);
+    gpuImage.setImage(source);
+    gpuImage.setFilter(mFilter);
+    Bitmap bitmap = gpuImage.getBitmapWithFilterApplied();
 
-        source.recycle();
+    source.recycle();
 
-        return bitmap;
-    }
+    return bitmap;
+  }
 
-    @Override
-    public String key() {
-        return "SwirlFilterTransformation(radius=" + mRadius +
-                ",angle=" + mAngle + ",center=" + mCenter.toString() + ")";
-    }
+  @Override public String key() {
+    return "SwirlFilterTransformation(radius=" + mRadius +
+        ",angle=" + mAngle + ",center=" + mCenter.toString() + ")";
+  }
 }

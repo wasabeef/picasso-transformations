@@ -33,7 +33,7 @@ public class BrightnessFilterTransformation implements Transformation {
   private float mBrightness;
 
   public BrightnessFilterTransformation(Context context) {
-    mContext = context;
+    this(context, 0.0f);
   }
 
   public BrightnessFilterTransformation(Context context, float brightness) {

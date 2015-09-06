@@ -26,8 +26,8 @@ import jp.co.cyberagent.android.gpuimage.GPUImageVignetteFilter;
 
 /**
  * Performs a vignetting effect, fading out the image at the edges
- * x:
- * y: The directional intensity of the vignetting, with a default of x = 0.75, y = 0.5
+ * The directional intensity of the vignetting,
+ * with a default of x = 0.5, y = 0.5, start = 0, end = 0.75
  */
 public class VignetteFilterTransformation implements Transformation {
 
@@ -40,8 +40,7 @@ public class VignetteFilterTransformation implements Transformation {
   private float mVignetteEnd;
 
   public VignetteFilterTransformation(Context context) {
-    mContext = context;
-    mCenter = new PointF();
+    this(context, new PointF(0.5f, 0.5f), new float[] { 0.0f, 0.0f, 0.0f }, 0.0f, 0.75f);
   }
 
   public VignetteFilterTransformation(Context context, PointF center, float[] color, float start,

@@ -22,6 +22,11 @@ import com.squareup.picasso.Transformation;
 import jp.co.cyberagent.android.gpuimage.GPUImage;
 import jp.co.cyberagent.android.gpuimage.GPUImagePixelationFilter;
 
+/**
+ * Applies a Pixelation effect to the image.
+ *
+ * The pixel with a default of 10.0.
+ */
 public class PixelationFilterTransformation implements Transformation {
 
   private Context mContext;
@@ -30,7 +35,7 @@ public class PixelationFilterTransformation implements Transformation {
   private float mPixel;
 
   public PixelationFilterTransformation(Context context) {
-    mContext = context;
+    this(context, 10f);
   }
 
   public PixelationFilterTransformation(Context context, float pixel) {

@@ -22,6 +22,9 @@ import com.squareup.picasso.Transformation;
 import jp.co.cyberagent.android.gpuimage.GPUImage;
 import jp.co.cyberagent.android.gpuimage.GPUImageColorInvertFilter;
 
+/**
+ * Invert all the colors in the image.
+ */
 public class InvertFilterTransformation implements Transformation {
 
   private Context mContext;

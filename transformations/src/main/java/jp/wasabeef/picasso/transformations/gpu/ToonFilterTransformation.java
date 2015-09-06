@@ -22,6 +22,11 @@ import com.squareup.picasso.Transformation;
 import jp.co.cyberagent.android.gpuimage.GPUImage;
 import jp.co.cyberagent.android.gpuimage.GPUImageToonFilter;
 
+/**
+ * The threshold at which to apply the edges, default of 0.2.
+ * The levels of quantization for the posterization of colors within the scene,
+ * with a default of 10.0.
+ */
 public class ToonFilterTransformation implements Transformation {
 
   private Context mContext;
@@ -31,7 +36,7 @@ public class ToonFilterTransformation implements Transformation {
   private float mQuantizationLevels;
 
   public ToonFilterTransformation(Context context) {
-    mContext = context;
+    this(context, .2f, 10.0f);
   }
 
   public ToonFilterTransformation(Context context, float threshold, float quantizationLevels) {

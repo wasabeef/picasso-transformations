@@ -23,6 +23,9 @@ import com.squareup.picasso.Transformation;
 import jp.co.cyberagent.android.gpuimage.GPUImage;
 import jp.co.cyberagent.android.gpuimage.GPUImageSwirlFilter;
 
+/**
+ * Creates a swirl distortion on the image.
+ */
 public class SwirlFilterTransformation implements Transformation {
 
   private Context mContext;
@@ -33,8 +36,7 @@ public class SwirlFilterTransformation implements Transformation {
   private PointF mCenter;
 
   public SwirlFilterTransformation(Context context) {
-    mContext = context;
-    mCenter = new PointF();
+    this(context, .5f, 1.0f, new PointF(.5f, .5f));
   }
 
   /**

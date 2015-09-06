@@ -33,7 +33,7 @@ public class ContrastFilterTransformation implements Transformation {
   private float mContrast;
 
   public ContrastFilterTransformation(Context context) {
-    mContext = context;
+    this(context, 1.0f);
   }
 
   public ContrastFilterTransformation(Context context, float contrast) {

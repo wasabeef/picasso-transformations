@@ -23,7 +23,9 @@ import jp.co.cyberagent.android.gpuimage.GPUImage;
 import jp.co.cyberagent.android.gpuimage.GPUImageKuwaharaFilter;
 
 /**
- * The radius to sample from when creating the brush-stroke effect, with a default of 3.
+ * Kuwahara all the colors in the image.
+ *
+ * The radius to sample from when creating the brush-stroke effect, with a default of 25.
  * The larger the radius, the slower the filter.
  */
 public class KuwaharaFilterTransformation implements Transformation {
@@ -34,7 +36,7 @@ public class KuwaharaFilterTransformation implements Transformation {
   private int mRadius;
 
   public KuwaharaFilterTransformation(Context context) {
-    mContext = context;
+    this(context, 25);
   }
 
   public KuwaharaFilterTransformation(Context context, int radius) {

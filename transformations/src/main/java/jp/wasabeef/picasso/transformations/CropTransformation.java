@@ -23,6 +23,12 @@ import com.squareup.picasso.Transformation;
 
 public class CropTransformation implements Transformation {
 
+  public enum CropType {
+    TOP,
+    CENTER,
+    BOTTOM
+  }
+
   private int mWidth;
   private int mHeight;
   private CropType mCropType = CropType.CENTER;
@@ -31,8 +37,7 @@ public class CropTransformation implements Transformation {
   }
 
   public CropTransformation(int width, int height) {
-    mWidth = width;
-    mHeight = height;
+    this(width, height, CropType.CENTER);
   }
 
   public CropTransformation(int width, int height, CropType cropType) {
@@ -79,11 +84,5 @@ public class CropTransformation implements Transformation {
       default:
         return 0;
     }
-  }
-
-  public enum CropType {
-    TOP,
-    CENTER,
-    BOTTOM
   }
 }

@@ -22,6 +22,11 @@ import com.squareup.picasso.Transformation;
 import jp.co.cyberagent.android.gpuimage.GPUImage;
 import jp.co.cyberagent.android.gpuimage.GPUImageSepiaFilter;
 
+/**
+ * Applies a simple sepia effect.
+ *
+ * The intensity with a default of 1.0.
+ */
 public class SepiaFilterTransformation implements Transformation {
 
   private Context mContext;
@@ -30,7 +35,7 @@ public class SepiaFilterTransformation implements Transformation {
   private float mIntensity;
 
   public SepiaFilterTransformation(Context context) {
-    mContext = context;
+    this(context, 1.0f);
   }
 
   public SepiaFilterTransformation(Context context, float intensity) {

@@ -32,7 +32,7 @@ repositories {
 }
 
 dependencies {
-    compile 'jp.wasabeef:picasso-transformations:1.1.0'
+    compile 'jp.wasabeef:picasso-transformations:1.2.0'
     // If you want to use the GPU Filters
     compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.3.0'
 }
@@ -76,7 +76,8 @@ android {
 ## Transformations
 
 ### Crop
-`CropTransformation(Top, Center, Bottom)`, `CropCircleTransformation`, `CropSquareTransformation`
+`CropTransformation`, `CropCircleTransformation`, `CropSquareTransformation`,
+`RoundedCornersTransformation`
 
 ### Color
 `ColorFilterTransformation`, `GrayscaleTransformation`
@@ -84,13 +85,15 @@ android {
 ### Blur
 `BlurTransformation`
 
-### Filter (use [GPUImage](https://github.com/CyberAgent/android-gpuimage))
-`ToonFilterTransformation`, `SepiaFilterTransformation`, `ContrastFilterTransformation`  
-`InvertFilterTransformation`, `PixelationFilterTransformation`, `SketchFilterTransformation`  
-`SwirlFilterTransformation`, `KuwaharaFilterTransformation`, `VignetteFilterTransformation`
+### Mask
+`MaskTransformation`
 
-### Other
-`RoundedCornersTransformation`
+### GPU Filter (use [GPUImage](https://github.com/CyberAgent/android-gpuimage))
+**Will require add dependencies for GPUImage.**
+
+`ToonFilterTransformation`, `SepiaFilterTransformation`, `ContrastFilterTransformation`
+`InvertFilterTransformation`, `PixelationFilterTransformation`, `SketchFilterTransformation`
+`SwirlFilterTransformation`, `KuwaharaFilterTransformation`, `VignetteFilterTransformation`
 
 Applications using Picasso Transformations
 ---

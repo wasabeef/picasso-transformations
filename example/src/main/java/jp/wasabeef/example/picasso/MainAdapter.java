@@ -74,22 +74,28 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
   @Override public void onBindViewHolder(MainAdapter.ViewHolder holder, int position) {
     switch (mDataSet.get(position)) {
-      case Mask:
+      case Mask: {
+        int width = Utils.dip2px(mContext, 133.33f);
+        int height = Utils.dip2px(mContext, 126.33f);
         Picasso.with(mContext)
-            .load(R.drawable.demo)
-            .resize(210, 210)
+            .load(R.drawable.check)
+            .resize(width, height)
             .centerCrop()
-            .transform((new MaskTransformation(mContext, R.drawable.mask210)))
+            .transform((new MaskTransformation(mContext, R.drawable.mask_starfish)))
             .into(holder.image);
         break;
-      case NinePatchMask:
+      }
+      case NinePatchMask: {
+        int width = Utils.dip2px(mContext, 150.0f);
+        int height = Utils.dip2px(mContext, 100.0f);
         Picasso.with(mContext)
-            .load(R.drawable.demo)
-            .resize(300, 300)
+            .load(R.drawable.check)
+            .resize(width, height)
             .centerCrop()
             .transform(new MaskTransformation(mContext, R.drawable.chat_me_mask))
             .into(holder.image);
         break;
+      }
       case CropTop:
         Picasso.with(mContext)
             .load(R.drawable.demo)

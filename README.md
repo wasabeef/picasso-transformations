@@ -10,7 +10,7 @@ Please feel free to use this.
 
 
 #### Are you using Glide or Fresco?
-[Glide Transformations](https://github.com/wasabeef/glide-transformations)
+[Glide Transformations](https://github.com/wasabeef/glide-transformations)  
 [Fresco Processors](https://github.com/wasabeef/fresco-processors)
  
 # Demo

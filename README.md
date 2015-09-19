@@ -9,8 +9,9 @@ An Android transformation library providing a variety of image transformations f
 Please feel free to use this.
 
 
-#### Are you using Glide?
+#### Are you using Glide or Fresco?
 [Glide Transformations](https://github.com/wasabeef/glide-transformations)
+[Fresco Processors](https://github.com/wasabeef/fresco-processors)
  
 # Demo
 

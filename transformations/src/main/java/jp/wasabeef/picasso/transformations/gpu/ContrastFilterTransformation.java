@@ -17,19 +17,13 @@ package jp.wasabeef.picasso.transformations.gpu;
  */
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import com.squareup.picasso.Transformation;
-import jp.co.cyberagent.android.gpuimage.GPUImage;
 import jp.co.cyberagent.android.gpuimage.GPUImageContrastFilter;
 
 /**
  * contrast value ranges from 0.0 to 4.0, with 1.0 as the normal level
  */
-public class ContrastFilterTransformation implements Transformation {
+public class ContrastFilterTransformation extends GPUFilterTransformation {
 
-  private Context mContext;
-
-  private GPUImageContrastFilter mFilter = new GPUImageContrastFilter();
   private float mContrast;
 
   public ContrastFilterTransformation(Context context) {
@@ -37,21 +31,10 @@ public class ContrastFilterTransformation implements Transformation {
   }
 
   public ContrastFilterTransformation(Context context, float contrast) {
-    mContext = context;
+    super(context, new GPUImageContrastFilter());
     mContrast = contrast;
-    mFilter.setContrast(mContrast);
-  }
-
-  @Override public Bitmap transform(Bitmap source) {
-
-    GPUImage gpuImage = new GPUImage(mContext);
-    gpuImage.setImage(source);
-    gpuImage.setFilter(mFilter);
-    Bitmap bitmap = gpuImage.getBitmapWithFilterApplied();
-
-    source.recycle();
-
-    return bitmap;
+    GPUImageContrastFilter filter = getFilter();
+    filter.setContrast(mContrast);
   }
 
   @Override public String key() {

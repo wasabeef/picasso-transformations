@@ -17,32 +17,15 @@ package jp.wasabeef.picasso.transformations.gpu;
  */
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import com.squareup.picasso.Transformation;
-import jp.co.cyberagent.android.gpuimage.GPUImage;
 import jp.co.cyberagent.android.gpuimage.GPUImageColorInvertFilter;
 
 /**
  * Invert all the colors in the image.
  */
-public class InvertFilterTransformation implements Transformation {
-
-  private Context mContext;
+public class InvertFilterTransformation extends GPUFilterTransformation {
 
   public InvertFilterTransformation(Context context) {
-    mContext = context;
-  }
-
-  @Override public Bitmap transform(Bitmap source) {
-
-    GPUImage gpuImage = new GPUImage(mContext);
-    gpuImage.setImage(source);
-    gpuImage.setFilter(new GPUImageColorInvertFilter());
-    Bitmap bitmap = gpuImage.getBitmapWithFilterApplied();
-
-    source.recycle();
-
-    return bitmap;
+    super(context, new GPUImageColorInvertFilter());
   }
 
   @Override public String key() {

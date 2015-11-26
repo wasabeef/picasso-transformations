@@ -17,9 +17,6 @@ package jp.wasabeef.picasso.transformations.gpu;
  */
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import com.squareup.picasso.Transformation;
-import jp.co.cyberagent.android.gpuimage.GPUImage;
 import jp.co.cyberagent.android.gpuimage.GPUImageKuwaharaFilter;
 
 /**
@@ -28,11 +25,8 @@ import jp.co.cyberagent.android.gpuimage.GPUImageKuwaharaFilter;
  * The radius to sample from when creating the brush-stroke effect, with a default of 25.
  * The larger the radius, the slower the filter.
  */
-public class KuwaharaFilterTransformation implements Transformation {
+public class KuwaharaFilterTransformation extends GPUFilterTransformation {
 
-  private Context mContext;
-
-  private GPUImageKuwaharaFilter mFilter = new GPUImageKuwaharaFilter();
   private int mRadius;
 
   public KuwaharaFilterTransformation(Context context) {
@@ -40,21 +34,10 @@ public class KuwaharaFilterTransformation implements Transformation {
   }
 
   public KuwaharaFilterTransformation(Context context, int radius) {
-    mContext = context;
+    super(context, new GPUImageKuwaharaFilter());
     mRadius = radius;
-    mFilter.setRadius(mRadius);
-  }
-
-  @Override public Bitmap transform(Bitmap source) {
-
-    GPUImage gpuImage = new GPUImage(mContext);
-    gpuImage.setImage(source);
-    gpuImage.setFilter(mFilter);
-    Bitmap bitmap = gpuImage.getBitmapWithFilterApplied();
-
-    source.recycle();
-
-    return bitmap;
+    GPUImageKuwaharaFilter filter = getFilter();
+    filter.setRadius(mRadius);
   }
 
   @Override public String key() {

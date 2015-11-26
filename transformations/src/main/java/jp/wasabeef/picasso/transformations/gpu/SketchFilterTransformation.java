@@ -17,29 +17,12 @@ package jp.wasabeef.picasso.transformations.gpu;
  */
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import com.squareup.picasso.Transformation;
-import jp.co.cyberagent.android.gpuimage.GPUImage;
 import jp.co.cyberagent.android.gpuimage.GPUImageSketchFilter;
 
-public class SketchFilterTransformation implements Transformation {
-
-  private Context mContext;
+public class SketchFilterTransformation extends GPUFilterTransformation {
 
   public SketchFilterTransformation(Context context) {
-    mContext = context;
-  }
-
-  @Override public Bitmap transform(Bitmap source) {
-
-    GPUImage gpuImage = new GPUImage(mContext);
-    gpuImage.setImage(source);
-    gpuImage.setFilter(new GPUImageSketchFilter());
-    Bitmap bitmap = gpuImage.getBitmapWithFilterApplied();
-
-    source.recycle();
-
-    return bitmap;
+    super(context, new GPUImageSketchFilter());
   }
 
   @Override public String key() {

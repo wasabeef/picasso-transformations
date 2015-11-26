@@ -17,9 +17,6 @@ package jp.wasabeef.picasso.transformations.gpu;
  */
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import com.squareup.picasso.Transformation;
-import jp.co.cyberagent.android.gpuimage.GPUImage;
 import jp.co.cyberagent.android.gpuimage.GPUImageToonFilter;
 
 /**
@@ -27,11 +24,8 @@ import jp.co.cyberagent.android.gpuimage.GPUImageToonFilter;
  * The levels of quantization for the posterization of colors within the scene,
  * with a default of 10.0.
  */
-public class ToonFilterTransformation implements Transformation {
+public class ToonFilterTransformation extends GPUFilterTransformation {
 
-  private Context mContext;
-
-  private GPUImageToonFilter mFilter = new GPUImageToonFilter();
   private float mThreshold;
   private float mQuantizationLevels;
 
@@ -40,23 +34,12 @@ public class ToonFilterTransformation implements Transformation {
   }
 
   public ToonFilterTransformation(Context context, float threshold, float quantizationLevels) {
-    mContext = context;
+    super(context, new GPUImageToonFilter());
     mThreshold = threshold;
     mQuantizationLevels = quantizationLevels;
-    mFilter.setThreshold(mThreshold);
-    mFilter.setQuantizationLevels(mQuantizationLevels);
-  }
-
-  @Override public Bitmap transform(Bitmap source) {
-
-    GPUImage gpuImage = new GPUImage(mContext);
-    gpuImage.setImage(source);
-    gpuImage.setFilter(mFilter);
-    Bitmap bitmap = gpuImage.getBitmapWithFilterApplied();
-
-    source.recycle();
-
-    return bitmap;
+    GPUImageToonFilter filter = getFilter();
+    filter.setThreshold(mThreshold);
+    filter.setQuantizationLevels(mQuantizationLevels);
   }
 
   @Override public String key() {

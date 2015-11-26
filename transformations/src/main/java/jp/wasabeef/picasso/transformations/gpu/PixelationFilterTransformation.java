@@ -17,9 +17,6 @@ package jp.wasabeef.picasso.transformations.gpu;
  */
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import com.squareup.picasso.Transformation;
-import jp.co.cyberagent.android.gpuimage.GPUImage;
 import jp.co.cyberagent.android.gpuimage.GPUImagePixelationFilter;
 
 /**
@@ -27,11 +24,8 @@ import jp.co.cyberagent.android.gpuimage.GPUImagePixelationFilter;
  *
  * The pixel with a default of 10.0.
  */
-public class PixelationFilterTransformation implements Transformation {
+public class PixelationFilterTransformation extends GPUFilterTransformation {
 
-  private Context mContext;
-
-  private GPUImagePixelationFilter mFilter = new GPUImagePixelationFilter();
   private float mPixel;
 
   public PixelationFilterTransformation(Context context) {
@@ -39,21 +33,10 @@ public class PixelationFilterTransformation implements Transformation {
   }
 
   public PixelationFilterTransformation(Context context, float pixel) {
-    mContext = context;
+    super(context, new GPUImagePixelationFilter());
     mPixel = pixel;
-    mFilter.setPixel(mPixel);
-  }
-
-  @Override public Bitmap transform(Bitmap source) {
-
-    GPUImage gpuImage = new GPUImage(mContext);
-    gpuImage.setImage(source);
-    gpuImage.setFilter(mFilter);
-    Bitmap bitmap = gpuImage.getBitmapWithFilterApplied();
-
-    source.recycle();
-
-    return bitmap;
+    GPUImagePixelationFilter filter = getFilter();
+    filter.setPixel(mPixel);
   }
 
   @Override public String key() {

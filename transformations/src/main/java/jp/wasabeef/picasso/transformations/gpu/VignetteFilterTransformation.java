@@ -17,11 +17,8 @@ package jp.wasabeef.picasso.transformations.gpu;
  */
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.PointF;
-import com.squareup.picasso.Transformation;
 import java.util.Arrays;
-import jp.co.cyberagent.android.gpuimage.GPUImage;
 import jp.co.cyberagent.android.gpuimage.GPUImageVignetteFilter;
 
 /**
@@ -29,11 +26,8 @@ import jp.co.cyberagent.android.gpuimage.GPUImageVignetteFilter;
  * The directional intensity of the vignetting,
  * with a default of x = 0.5, y = 0.5, start = 0, end = 0.75
  */
-public class VignetteFilterTransformation implements Transformation {
+public class VignetteFilterTransformation extends GPUFilterTransformation {
 
-  private Context mContext;
-
-  private GPUImageVignetteFilter mFilter = new GPUImageVignetteFilter();
   private PointF mCenter;
   private float[] mVignetteColor;
   private float mVignetteStart;
@@ -45,27 +39,16 @@ public class VignetteFilterTransformation implements Transformation {
 
   public VignetteFilterTransformation(Context context, PointF center, float[] color, float start,
       float end) {
-    mContext = context;
+    super(context, new GPUImageVignetteFilter());
     mCenter = center;
     mVignetteColor = color;
     mVignetteStart = start;
     mVignetteEnd = end;
-    mFilter.setVignetteCenter(mCenter);
-    mFilter.setVignetteColor(mVignetteColor);
-    mFilter.setVignetteStart(mVignetteStart);
-    mFilter.setVignetteEnd(mVignetteEnd);
-  }
-
-  @Override public Bitmap transform(Bitmap source) {
-
-    GPUImage gpuImage = new GPUImage(mContext);
-    gpuImage.setImage(source);
-    gpuImage.setFilter(mFilter);
-    Bitmap bitmap = gpuImage.getBitmapWithFilterApplied();
-
-    source.recycle();
-
-    return bitmap;
+    GPUImageVignetteFilter filter = getFilter();
+    filter.setVignetteCenter(mCenter);
+    filter.setVignetteColor(mVignetteColor);
+    filter.setVignetteStart(mVignetteStart);
+    filter.setVignetteEnd(mVignetteEnd);
   }
 
   @Override public String key() {

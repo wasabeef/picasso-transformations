@@ -17,20 +17,14 @@ package jp.wasabeef.picasso.transformations.gpu;
  */
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.PointF;
-import com.squareup.picasso.Transformation;
-import jp.co.cyberagent.android.gpuimage.GPUImage;
 import jp.co.cyberagent.android.gpuimage.GPUImageSwirlFilter;
 
 /**
  * Creates a swirl distortion on the image.
  */
-public class SwirlFilterTransformation implements Transformation {
+public class SwirlFilterTransformation extends GPUFilterTransformation {
 
-  private Context mContext;
-
-  private GPUImageSwirlFilter mFilter = new GPUImageSwirlFilter();
   private float mRadius;
   private float mAngle;
   private PointF mCenter;
@@ -45,25 +39,14 @@ public class SwirlFilterTransformation implements Transformation {
    * @param center default (0.5, 0.5)
    */
   public SwirlFilterTransformation(Context context, float radius, float angle, PointF center) {
-    mContext = context;
+    super(context, new GPUImageSwirlFilter());
     mRadius = radius;
     mAngle = angle;
     mCenter = center;
-    mFilter.setRadius(mRadius);
-    mFilter.setAngle(mAngle);
-    mFilter.setCenter(mCenter);
-  }
-
-  @Override public Bitmap transform(Bitmap source) {
-
-    GPUImage gpuImage = new GPUImage(mContext);
-    gpuImage.setImage(source);
-    gpuImage.setFilter(mFilter);
-    Bitmap bitmap = gpuImage.getBitmapWithFilterApplied();
-
-    source.recycle();
-
-    return bitmap;
+    GPUImageSwirlFilter filter = getFilter();
+    filter.setRadius(mRadius);
+    filter.setAngle(mAngle);
+    filter.setCenter(mCenter);
   }
 
   @Override public String key() {

@@ -42,7 +42,7 @@ public class MaskTransformation implements Transformation {
    * same make file name. If you have a good idea please tell us, thanks.
    */
   public MaskTransformation(Context context, int maskId) {
-    mContext = context;
+    mContext = context.getApplicationContext();
     mMaskId = maskId;
   }
 

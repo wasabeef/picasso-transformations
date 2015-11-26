@@ -45,7 +45,7 @@ public class BlurTransformation implements Transformation {
   }
 
   public BlurTransformation(Context context, int radius, int sampling) {
-    mContext = context;
+    mContext = context.getApplicationContext();
     mRadius = radius;
     mSampling = sampling;
   }

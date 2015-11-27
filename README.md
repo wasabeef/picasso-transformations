@@ -67,8 +67,8 @@ If you are using `BlurTransformation`.
 android {
     ...
     defaultConfig {
-        ...
-        renderscriptTargetApi 23
+        // Warning:Renderscript support mode is not currently supported with renderscript target 21+
+        renderscriptTargetApi 20
         renderscriptSupportModeEnabled true
     }
 }

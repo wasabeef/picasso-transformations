@@ -22,9 +22,11 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.support.v8.renderscript.Allocation;
 import android.support.v8.renderscript.Element;
+import android.support.v8.renderscript.RSRuntimeException;
 import android.support.v8.renderscript.RenderScript;
 import android.support.v8.renderscript.ScriptIntrinsicBlur;
 import com.squareup.picasso.Transformation;
+import jp.wasabeef.picasso.transformations.internal.FastBlur;
 
 public class BlurTransformation implements Transformation {
 
@@ -63,19 +65,28 @@ public class BlurTransformation implements Transformation {
     paint.setFlags(Paint.FILTER_BITMAP_FLAG);
     canvas.drawBitmap(source, 0, 0, paint);
 
-    RenderScript rs = RenderScript.create(mContext);
-    Allocation input = Allocation.createFromBitmap(rs, bitmap, Allocation.MipmapControl.MIPMAP_NONE,
-        Allocation.USAGE_SCRIPT);
-    Allocation output = Allocation.createTyped(rs, input.getType());
-    ScriptIntrinsicBlur blur = ScriptIntrinsicBlur.create(rs, Element.U8_4(rs));
+    RenderScript rs = null;
+    try {
+      rs = RenderScript.create(mContext);
+      Allocation input =
+          Allocation.createFromBitmap(rs, bitmap, Allocation.MipmapControl.MIPMAP_NONE,
+              Allocation.USAGE_SCRIPT);
+      Allocation output = Allocation.createTyped(rs, input.getType());
+      ScriptIntrinsicBlur blur = ScriptIntrinsicBlur.create(rs, Element.U8_4(rs));
 
-    blur.setInput(input);
-    blur.setRadius(mRadius);
-    blur.forEach(output);
-    output.copyTo(bitmap);
+      blur.setInput(input);
+      blur.setRadius(mRadius);
+      blur.forEach(output);
+      output.copyTo(bitmap);
+    } catch (RSRuntimeException e) {
+      bitmap = FastBlur.doBlur(bitmap, mRadius, true);
+    } finally {
+      if (rs != null) {
+        rs.destroy();
+      }
+    }
 
     source.recycle();
-    rs.destroy();
 
     return bitmap;
   }

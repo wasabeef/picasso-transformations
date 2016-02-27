@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+Version 1.4.0 *(2016-02-28)*
+----------------------------
+
+Use FastBlur as a fallback upon RenderScript failure.
+
 Version 1.3.1 *(2015-11-27)*
 ----------------------------
 

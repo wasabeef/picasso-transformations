@@ -20,9 +20,9 @@ public class MainActivity extends AppCompatActivity {
     List<Type> dataSet = new ArrayList<>();
     dataSet.add(Type.Mask);
     dataSet.add(Type.NinePatchMask);
-    dataSet.add(Type.CropTop);
-    dataSet.add(Type.CropCenter);
-    dataSet.add(Type.CropBottom);
+    dataSet.add(Type.CropCenterTop);
+    dataSet.add(Type.CropCenterCenter);
+    dataSet.add(Type.CropCenterBottom);
     dataSet.add(Type.CropSquare);
     dataSet.add(Type.CropCircle);
     dataSet.add(Type.ColorFilter);
@@ -39,6 +39,22 @@ public class MainActivity extends AppCompatActivity {
     dataSet.add(Type.Brightness);
     dataSet.add(Type.Kuawahara);
     dataSet.add(Type.Vignette);
+
+    dataSet.add(Type.CropLeftTop);
+    dataSet.add(Type.CropLeftCenter);
+    dataSet.add(Type.CropLeftBottom);
+    dataSet.add(Type.CropRightTop);
+    dataSet.add(Type.CropRightCenter);
+    dataSet.add(Type.CropRightBottom);
+    dataSet.add(Type.Crop169CenterCenter);
+    dataSet.add(Type.Crop43CenterCenter);
+    dataSet.add(Type.Crop31CenterCenter);
+    dataSet.add(Type.Crop31CenterTop);
+    dataSet.add(Type.CropSquareCenterCenter);
+    dataSet.add(Type.CropQuarterCenterCenter);
+    dataSet.add(Type.CropQuarterCenterTop);
+    dataSet.add(Type.CropQuarterBottomRight);
+    dataSet.add(Type.CropHalfWidth43CenterCenter);
 
     recyclerView.setAdapter(new MainAdapter(this, dataSet));
   }

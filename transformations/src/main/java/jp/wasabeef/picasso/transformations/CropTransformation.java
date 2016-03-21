@@ -63,14 +63,16 @@ public class CropTransformation implements Transformation {
   private GravityHorizontal mGravityHorizontal = GravityHorizontal.CENTER;
   private GravityVertical mGravityVertical = GravityVertical.CENTER;
 
+  private boolean recycleSourceBitmap = true;
+
   /**
    * Crops to the given size and offset in pixels.
-   * If either width or height is 0 then the original image's dimension is used.
+   * If either width or height is zero then the original image's dimension is used.
    *
-   * @param left
-   * @param top
-   * @param width
-   * @param height
+   * @param left offset in pixels from the left edge of the source image
+   * @param top offset in pixels from the top of the source image
+   * @param width in pixels
+   * @param height in pixels
      */
   public CropTransformation(int left, int top, int width, int height) {
     mLeft = left;
@@ -82,12 +84,12 @@ public class CropTransformation implements Transformation {
 
   /**
    * Crops to the given width and height (in pixels) using the given gravity.
-   * If either width or height is 0 then the original image's dimension is used.
+   * If either width or height is zero then the original image's dimension is used.
    *
-   * @param width
-   * @param height
-   * @param gravityHorizontal
-   * @param gravityVertical
+   * @param width in pixels
+   * @param height in pixels
+   * @param gravityHorizontal position of the cropped area within the larger source image
+   * @param gravityVertical position of the cropped area within the larger source image
    */
   public CropTransformation(int width, int height, GravityHorizontal gravityHorizontal, GravityVertical gravityVertical) {
     mWidth = width;
@@ -98,10 +100,10 @@ public class CropTransformation implements Transformation {
 
   /**
    * Crops to the given width and height (in pixels), defaulting gravity to CENTER/CENTER.
-   * If either width or height is 0 then the original image's dimension is used.
+   * If either width or height is zero then the original image's dimension is used.
    *
-   * @param width
-   * @param height
+   * @param width in pixels
+   * @param height in pixels
    */
   public CropTransformation(int width, int height) {
     this(width, height, GravityHorizontal.CENTER, GravityVertical.CENTER);
@@ -113,12 +115,12 @@ public class CropTransformation implements Transformation {
    *
    * e.g. (0.5, 0.5, LEFT, TOP) will crop a quarter-sized box from the top left of the original.
    *
-   * If widthRatio or heightRatio are 0 then 100% of the original image's dimension will be used.
+   * If widthRatio or heightRatio are zero then 100% of the original image's dimension will be used.
    *
-   * @param widthRatio
-   * @param heightRatio
-   * @param gravityHorizontal
-   * @param gravityVertical
+   * @param widthRatio width of the target image relative to the width of the source image; 1 = 100%
+   * @param heightRatio height of the target image relative to the height of the source image; 1 = 100%
+   * @param gravityHorizontal position of the cropped area within the larger source image
+   * @param gravityVertical position of the cropped area within the larger source image
   */
   public CropTransformation(float widthRatio, float heightRatio, GravityHorizontal gravityHorizontal, GravityVertical gravityVertical) {
     mWidthRatio = widthRatio;
@@ -133,10 +135,10 @@ public class CropTransformation implements Transformation {
    *
    * e.g. (0.5, 0.5) will crop a quarter-sized box from the middle of the original.
    *
-   * If widthRatio or heightRatio are 0 then 100% of the original image's dimension will be used.
+   * If widthRatio or heightRatio are zero then 100% of the original image's dimension will be used.
    *
-   * @param widthRatio
-   * @param heightRatio
+   * @param widthRatio width of the target image relative to the width of the source image; 1 = 100%
+   * @param heightRatio height of the target image relative to the height of the source image; 1 = 100%
    */
   public CropTransformation(float widthRatio, float heightRatio) {
     this(widthRatio, heightRatio, GravityHorizontal.CENTER, GravityVertical.CENTER);
@@ -146,17 +148,17 @@ public class CropTransformation implements Transformation {
 
   /**
    * Crops to the desired aspectRatio driven by either width OR height in pixels.
-   * If one of width/height is >0 the other is calculated
-   * If width and height are both 0 then the largest area matching the aspectRatio is returned
+   * If one of width/height is greater than zero the other is calculated
+   * If width and height are both zero then the largest area matching the aspectRatio is returned
    * If both width and height are specified then the aspectRatio is ignored
    *
    * If aspectRatio is 0 then the result will be the same as calling the version without aspectRatio.
    *
-   * @param width
-   * @param height
-   * @param aspectRatio
-   * @param gravityHorizontal
-   * @param gravityVertical
+   * @param width in pixels, one of width/height should be zero
+   * @param height in pixels, one of width/height should be zero
+   * @param aspectRatio width/height: greater than 1 is landscape, less than 1 is portrait, 1 is square
+   * @param gravityHorizontal position of the cropped area within the larger source image
+   * @param gravityVertical position of the cropped area within the larger source image
    */
   public CropTransformation(int width, int height, float aspectRatio, GravityHorizontal gravityHorizontal, GravityVertical gravityVertical) {
     mWidth = width;
@@ -169,8 +171,8 @@ public class CropTransformation implements Transformation {
 
   /**
    * Crops to the desired aspectRatio driven by either width OR height as a ratio to the original image's dimension.
-   * If one of width/height is >0 the other is calculated
-   * If width and height are both 0 then the largest area matching the aspectRatio is returned
+   * If one of width/height is greater than zero the other is calculated
+   * If width and height are both zero then the largest area matching the aspectRatio is returned
    * If both width and height are specified then the aspectRatio is ignored
    *
    * If aspectRatio is 0 then the result will be the same as calling the version without aspectRatio.
@@ -178,11 +180,11 @@ public class CropTransformation implements Transformation {
    * e.g. to get an image with a width of 50% of the source image's width and cropped to 16:9 from the center/center:
    *   CropTransformation(0.5, (float)0, (float)16/9, CENTER, CENTER);
    *
-   * @param widthRatio
-   * @param heightRatio
-   * @param aspectRatio
-   * @param gravityHorizontal
-   * @param gravityVertical
+   * @param widthRatio width of the target image relative to the width of the source image; 1 = 100%
+   * @param heightRatio height of the target image relative to the height of the source image; 1 = 100%
+   * @param aspectRatio width/height: greater than 1 is landscape, less than 1 is portrait, 1 is square
+   * @param gravityHorizontal position of the cropped area within the larger source image
+   * @param gravityVertical position of the cropped area within the larger source image
    */
   public CropTransformation(float widthRatio, float heightRatio, float aspectRatio, GravityHorizontal gravityHorizontal, GravityVertical gravityVertical) {
     mWidthRatio = widthRatio;
@@ -197,10 +199,10 @@ public class CropTransformation implements Transformation {
    * Crops to the largest image that will fit the given aspectRatio.
    * This will effectively chop off either the top/bottom or left/right of the source image.
    *
-   * @param aspectRatio
-   * @param gravityHorizontal
-   * @param gravityVertical
-   */
+   * @param aspectRatio width/height: greater than 1 is landscape, less than 1 is portrait, 1 is square
+   * @param gravityHorizontal position of the cropped area within the larger source image
+   * @param gravityVertical position of the cropped area within the larger source image
+  */
   public CropTransformation(float aspectRatio, GravityHorizontal gravityHorizontal, GravityVertical gravityVertical) {
     mAspectRatio = aspectRatio;
     mGravityHorizontal = gravityHorizontal;
@@ -274,8 +276,10 @@ public class CropTransformation implements Transformation {
     Canvas canvas = new Canvas(bitmap);
     if (Log.isLoggable(TAG, Log.VERBOSE)) Log.v(TAG, "transform(): copying from source with width: " + source.getWidth() + ", height: " + source.getHeight() );
     canvas.drawBitmap(source, sourceRect, targetRect, null);
-    source.recycle();
 
+    if (recycleSourceBitmap == true) {
+      source.recycle();
+    }
     if (Log.isLoggable(TAG, Log.VERBOSE)) Log.v(TAG, "transform(): returning bitmap with width: " + bitmap.getWidth() + ", height: " + bitmap.getHeight() );
 
     return bitmap;
@@ -317,5 +321,15 @@ public class CropTransformation implements Transformation {
       default:
         return 0;
     }
+  }
+
+  /**
+   * If the source bitmap is used by anything then this class should not recycle it.
+   * Defaults to true.
+   *
+   * @param recycleSourceBitmap defaults to true; set to false to not call .recycle() on the bitmap
+   */
+  public void setRecycleSourceBitmap(boolean recycleSourceBitmap) {
+    this.recycleSourceBitmap = recycleSourceBitmap;
   }
 }

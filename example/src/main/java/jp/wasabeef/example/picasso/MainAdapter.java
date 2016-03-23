@@ -41,9 +41,24 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
   enum Type {
     Mask,
     NinePatchMask,
-    CropTop,
-    CropCenter,
-    CropBottom,
+    CropLeftTop,
+    CropLeftCenter,
+    CropLeftBottom,
+    CropCenterTop,
+    CropCenterCenter,
+    CropCenterBottom,
+    CropRightTop,
+    CropRightCenter,
+    CropRightBottom,
+    CropSquareCenterCenter,
+    Crop169CenterCenter,
+    Crop43CenterCenter,
+    Crop31CenterCenter,
+    Crop31CenterTop,
+    CropQuarterCenterCenter,
+    CropQuarterCenterTop,
+    CropQuarterBottomRight,
+    CropHalfWidth43CenterCenter,
     CropSquare,
     CropCircle,
     ColorFilter,
@@ -96,24 +111,113 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             .into(holder.image);
         break;
       }
-      case CropTop:
+      case CropLeftTop:
+        Picasso.with(mContext)
+                .load(R.drawable.demo)
+                .transform(new CropTransformation(300, 100, CropTransformation.GravityHorizontal.LEFT, CropTransformation.GravityVertical.TOP))
+                .into(holder.image);
+        break;
+      case CropLeftCenter:
+        Picasso.with(mContext)
+                .load(R.drawable.demo)
+                .transform(new CropTransformation(300,100))//300, 100, CropTransformation.GravityHorizontal.LEFT, CropTransformation.GravityVertical.CENTER))
+                .into(holder.image);
+        break;
+      case CropLeftBottom:
+        Picasso.with(mContext)
+                .load(R.drawable.demo)
+                .transform(new CropTransformation(300, 100, CropTransformation.GravityHorizontal.LEFT, CropTransformation.GravityVertical.BOTTOM))
+                .into(holder.image);
+        break;
+      case CropCenterTop:
         Picasso.with(mContext)
             .load(R.drawable.demo)
-            .transform(new CropTransformation(300, 100, CropTransformation.CropType.TOP))
+            .transform(new CropTransformation(300, 100, CropTransformation.GravityHorizontal.CENTER, CropTransformation.GravityVertical.TOP))
             .into(holder.image);
         break;
-      case CropCenter:
+      case CropCenterCenter:
         Picasso.with(mContext)
             .load(R.drawable.demo)
             .transform(new CropTransformation(300, 100))
             .into(holder.image);
         break;
-      case CropBottom:
+      case CropCenterBottom:
         Picasso.with(mContext)
             .load(R.drawable.demo)
-            .transform(new CropTransformation(300, 100, CropTransformation.CropType.BOTTOM))
+            .transform(new CropTransformation(300, 100, CropTransformation.GravityHorizontal.CENTER, CropTransformation.GravityVertical.BOTTOM))
             .into(holder.image);
-
+        break;
+      case CropRightTop:
+        Picasso.with(mContext)
+                .load(R.drawable.demo)
+                .transform(new CropTransformation(300, 100, CropTransformation.GravityHorizontal.RIGHT, CropTransformation.GravityVertical.TOP))
+                .into(holder.image);
+        break;
+      case CropRightCenter:
+        Picasso.with(mContext)
+                .load(R.drawable.demo)
+                .transform(new CropTransformation(300, 100, CropTransformation.GravityHorizontal.RIGHT, CropTransformation.GravityVertical.CENTER))
+                .into(holder.image);
+        break;
+      case CropRightBottom:
+        Picasso.with(mContext)
+                .load(R.drawable.demo)
+                .transform(new CropTransformation(300, 100, CropTransformation.GravityHorizontal.RIGHT, CropTransformation.GravityVertical.BOTTOM))
+                .into(holder.image);
+        break;
+      case Crop169CenterCenter:
+        Picasso.with(mContext)
+                .load(R.drawable.demo)
+                .transform(new CropTransformation((float)16/(float)9, CropTransformation.GravityHorizontal.CENTER, CropTransformation.GravityVertical.CENTER))
+                .into(holder.image);
+        break;
+      case Crop43CenterCenter:
+        Picasso.with(mContext)
+                .load(R.drawable.demo)
+                .transform(new CropTransformation((float)4/(float)3, CropTransformation.GravityHorizontal.CENTER, CropTransformation.GravityVertical.CENTER))
+                .into(holder.image);
+        break;
+      case Crop31CenterCenter:
+        Picasso.with(mContext)
+                .load(R.drawable.demo)
+                .transform(new CropTransformation(3, CropTransformation.GravityHorizontal.CENTER, CropTransformation.GravityVertical.CENTER))
+                .into(holder.image);
+        break;
+      case Crop31CenterTop:
+        Picasso.with(mContext)
+                .load(R.drawable.demo)
+                .transform(new CropTransformation(3, CropTransformation.GravityHorizontal.CENTER, CropTransformation.GravityVertical.TOP))
+                .into(holder.image);
+        break;
+      case CropSquareCenterCenter:
+        Picasso.with(mContext)
+                .load(R.drawable.demo)
+                .transform(new CropTransformation(1, CropTransformation.GravityHorizontal.CENTER, CropTransformation.GravityVertical.CENTER))
+                .into(holder.image);
+        break;
+      case CropQuarterCenterCenter:
+        Picasso.with(mContext)
+                .load(R.drawable.demo)
+                .transform(new CropTransformation((float)0.5, (float)0.5, CropTransformation.GravityHorizontal.CENTER, CropTransformation.GravityVertical.CENTER))
+                .into(holder.image);
+        break;
+      case CropQuarterCenterTop:
+        Picasso.with(mContext)
+                .load(R.drawable.demo)
+                .transform(new CropTransformation((float)0.5, (float)0.5, CropTransformation.GravityHorizontal.CENTER, CropTransformation.GravityVertical.TOP))
+                .into(holder.image);
+        break;
+      case CropQuarterBottomRight:
+        Picasso.with(mContext)
+                .load(R.drawable.demo)
+                .transform(new CropTransformation((float)0.5, (float)0.5, CropTransformation.GravityHorizontal.RIGHT, CropTransformation.GravityVertical.BOTTOM))
+                .into(holder.image);
+        break;
+      case CropHalfWidth43CenterCenter:
+        Picasso.with(mContext)
+                .load(R.drawable.demo)
+                .transform(new CropTransformation((float)0.5, 0, (float)4/(float)3, CropTransformation.GravityHorizontal.CENTER, CropTransformation.GravityVertical.CENTER))
+                .into(holder.image);
         break;
       case CropSquare:
         Picasso.with(mContext)

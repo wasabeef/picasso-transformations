@@ -1,6 +1,15 @@
 Change Log
 ==========
 
+Version 2.1.0 *(2016-03-28)*
+----------------------------
+
+Extended the CropTransformation by [@molexx](https://github.com/molexx)
+  - Horizontal gravity
+  - Crop to aspect ratio
+  - Crop to width/height as a ratio of original image's width/height
+  - Crop to exact area (specify left and top)
+
 Version 2.0.0 *(2016-03-02)*
 ----------------------------
 

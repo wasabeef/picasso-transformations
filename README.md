@@ -29,13 +29,12 @@ Please feel free to use this.
 ```groovy
 repositories {
     jcenter()
-    mavenCentral()  // GPUImage for Android
 }
 
 dependencies {
-    compile 'jp.wasabeef:picasso-transformations:2.0.0'
+    compile 'jp.wasabeef:picasso-transformations:2.1.0'
     // If you want to use the GPU Filters
-    compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.3.0'
+    compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
 }
 ```
 

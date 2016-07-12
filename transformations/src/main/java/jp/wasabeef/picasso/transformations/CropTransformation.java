@@ -79,6 +79,8 @@ public class CropTransformation implements Transformation {
     mTop = top;
     mWidth = width;
     mHeight = height;
+    mGravityHorizontal = null;
+    mGravityVertical = null;
   }
 
   /**

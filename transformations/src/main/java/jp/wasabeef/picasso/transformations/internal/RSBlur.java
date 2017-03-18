@@ -11,7 +11,7 @@ import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicBlur;
 
 /**
- * Copyright (C) 2015 Wasabeef
+ * Copyright (C) 2017 Wasabeef
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,7 +36,8 @@ public class RSBlur {
     ScriptIntrinsicBlur blur = null;
     try {
       rs = RenderScript.create(context);
-      input = Allocation.createFromBitmap(rs, bitmap, Allocation.MipmapControl.MIPMAP_NONE, Allocation.USAGE_SCRIPT);
+      input = Allocation.createFromBitmap(rs, bitmap, Allocation.MipmapControl.MIPMAP_NONE,
+          Allocation.USAGE_SCRIPT);
       output = Allocation.createTyped(rs, input.getType());
       blur = ScriptIntrinsicBlur.create(rs, Element.U8_4(rs));
 
@@ -48,14 +49,14 @@ public class RSBlur {
       if (rs != null) {
         rs.destroy();
       }
-      if(input != null) {
+      if (input != null) {
         input.destroy();
       }
-      if(output != null) {
-          output.destroy();
+      if (output != null) {
+        output.destroy();
       }
-      if(blur != null) {
-          blur.destroy();
+      if (blur != null) {
+        blur.destroy();
       }
     }
 

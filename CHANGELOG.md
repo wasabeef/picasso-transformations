@@ -1,6 +1,17 @@
 Change Log
 ==========
 
+Version 2.1.1 *(2017-03-17)*
+----------------------------
+
+Update:
+- Compile & Target SDK Version 23 -> 25
+- Build Tools 23.0.2 -> 25.0.2
+- Support Library 23.1.1 -> 25.3.0
+
+Bug Fix:
+- Additional resource cleanup in RSBlur.
+
 Version 2.1.0 *(2016-03-28)*
 ----------------------------
 

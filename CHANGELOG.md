@@ -1,6 +1,12 @@
 Change Log
 ==========
 
+Version 2.1.2 *(2017-03-21)*
+----------------------------
+
+Bug Fix:
+- BlurTransformation crashes on Android 4.2.
+
 Version 2.1.1 *(2017-03-17)*
 ----------------------------
 

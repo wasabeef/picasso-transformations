@@ -32,7 +32,7 @@ repositories {
 }
 
 dependencies {
-    compile 'jp.wasabeef:picasso-transformations:2.1.2'
+    compile 'jp.wasabeef:picasso-transformations:2.2.0'
     // If you want to use the GPU Filters
     compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
 }
@@ -44,7 +44,7 @@ Set Picasso Transform.
 
 ```java
 Picasso.with(mContext).load(R.drawable.demo)
-        .transform(transformation).into((ImageView) findViewById(R.id.image));
+    .transform(transformation).into((ImageView) findViewById(R.id.image));
 ```
 
 ## Advanced Step 3
@@ -53,9 +53,9 @@ You can set a multiple transformations.
 
 ```java
 Picasso.with(mContext).load(R.drawable.demo)
-                .transform(transformation)
-                .transform(new CropCircleTransformation())
-                .into(holder.image);
+    .transform(transformation)
+    .transform(new CropCircleTransformation())
+    .into(holder.image);
 ```
 
 ## Transformations
@@ -109,7 +109,7 @@ Thanks
 License
 -------
 
-    Copyright 2017 Wasabeef
+    Copyright 2018 Wasabeef
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

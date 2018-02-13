@@ -4,6 +4,12 @@ Change Log
 Version 2.2.0 *(2018-02-02)*
 ----------------------------
 
+Bug Fix:  
+- Fix settings for proguard [#38](https://github.com/wasabeef/picasso-transformations/pull/38)  
+
+Version 2.2.0 *(2018-02-02)*
+----------------------------
+
 Update:  
 - Compile & Target SDK Version 25 -> 27  
 - Build Tools 26.0.1 -> 27.0.3  

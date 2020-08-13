@@ -3,7 +3,7 @@ package jp.wasabeef.example.picasso;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.PointF;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -92,7 +92,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
       case Mask: {
         int width = Utils.dip2px(mContext, 266.66f);
         int height = Utils.dip2px(mContext, 252.66f);
-        Picasso.with(mContext)
+        Picasso.get()
             .load(R.drawable.check)
             .resize(width, height)
             .centerCrop()
@@ -103,7 +103,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
       case NinePatchMask: {
         int width = Utils.dip2px(mContext, 300.0f);
         int height = Utils.dip2px(mContext, 200.0f);
-        Picasso.with(mContext)
+        Picasso.get()
             .load(R.drawable.check)
             .resize(width, height)
             .centerCrop()
@@ -112,67 +112,67 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         break;
       }
       case CropLeftTop:
-        Picasso.with(mContext)
+        Picasso.get()
             .load(R.drawable.demo)
             .transform(new CropTransformation(300, 100, CropTransformation.GravityHorizontal.LEFT,
                 CropTransformation.GravityVertical.TOP))
             .into(holder.image);
         break;
       case CropLeftCenter:
-        Picasso.with(mContext).load(R.drawable.demo)
+        Picasso.get().load(R.drawable.demo)
             // 300, 100, CropTransformation.GravityHorizontal.LEFT, CropTransformation.GravityVertical.CENTER))
             .transform(new CropTransformation(300, 100)).into(holder.image);
         break;
       case CropLeftBottom:
-        Picasso.with(mContext)
+        Picasso.get()
             .load(R.drawable.demo)
             .transform(new CropTransformation(300, 100, CropTransformation.GravityHorizontal.LEFT,
                 CropTransformation.GravityVertical.BOTTOM))
             .into(holder.image);
         break;
       case CropCenterTop:
-        Picasso.with(mContext)
+        Picasso.get()
             .load(R.drawable.demo)
             .transform(new CropTransformation(300, 100, CropTransformation.GravityHorizontal.CENTER,
                 CropTransformation.GravityVertical.TOP))
             .into(holder.image);
         break;
       case CropCenterCenter:
-        Picasso.with(mContext)
+        Picasso.get()
             .load(R.drawable.demo)
             .transform(new CropTransformation(300, 100))
             .into(holder.image);
         break;
       case CropCenterBottom:
-        Picasso.with(mContext)
+        Picasso.get()
             .load(R.drawable.demo)
             .transform(new CropTransformation(300, 100, CropTransformation.GravityHorizontal.CENTER,
                 CropTransformation.GravityVertical.BOTTOM))
             .into(holder.image);
         break;
       case CropRightTop:
-        Picasso.with(mContext)
+        Picasso.get()
             .load(R.drawable.demo)
             .transform(new CropTransformation(300, 100, CropTransformation.GravityHorizontal.RIGHT,
                 CropTransformation.GravityVertical.TOP))
             .into(holder.image);
         break;
       case CropRightCenter:
-        Picasso.with(mContext)
+        Picasso.get()
             .load(R.drawable.demo)
             .transform(new CropTransformation(300, 100, CropTransformation.GravityHorizontal.RIGHT,
                 CropTransformation.GravityVertical.CENTER))
             .into(holder.image);
         break;
       case CropRightBottom:
-        Picasso.with(mContext)
+        Picasso.get()
             .load(R.drawable.demo)
             .transform(new CropTransformation(300, 100, CropTransformation.GravityHorizontal.RIGHT,
                 CropTransformation.GravityVertical.BOTTOM))
             .into(holder.image);
         break;
       case Crop169CenterCenter:
-        Picasso.with(mContext)
+        Picasso.get()
             .load(R.drawable.demo)
             .transform(new CropTransformation((float) 16 / (float) 9,
                 CropTransformation.GravityHorizontal.CENTER,
@@ -180,7 +180,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             .into(holder.image);
         break;
       case Crop43CenterCenter:
-        Picasso.with(mContext)
+        Picasso.get()
             .load(R.drawable.demo)
             .transform(new CropTransformation((float) 4 / (float) 3,
                 CropTransformation.GravityHorizontal.CENTER,
@@ -188,28 +188,28 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             .into(holder.image);
         break;
       case Crop31CenterCenter:
-        Picasso.with(mContext)
+        Picasso.get()
             .load(R.drawable.demo)
             .transform(new CropTransformation(3, CropTransformation.GravityHorizontal.CENTER,
                 CropTransformation.GravityVertical.CENTER))
             .into(holder.image);
         break;
       case Crop31CenterTop:
-        Picasso.with(mContext)
+        Picasso.get()
             .load(R.drawable.demo)
             .transform(new CropTransformation(3, CropTransformation.GravityHorizontal.CENTER,
                 CropTransformation.GravityVertical.TOP))
             .into(holder.image);
         break;
       case CropSquareCenterCenter:
-        Picasso.with(mContext)
+        Picasso.get()
             .load(R.drawable.demo)
             .transform(new CropTransformation(1, CropTransformation.GravityHorizontal.CENTER,
                 CropTransformation.GravityVertical.CENTER))
             .into(holder.image);
         break;
       case CropQuarterCenterCenter:
-        Picasso.with(mContext)
+        Picasso.get()
             .load(R.drawable.demo)
             .transform(new CropTransformation((float) 0.5, (float) 0.5,
                 CropTransformation.GravityHorizontal.CENTER,
@@ -217,7 +217,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             .into(holder.image);
         break;
       case CropQuarterCenterTop:
-        Picasso.with(mContext)
+        Picasso.get()
             .load(R.drawable.demo)
             .transform(new CropTransformation((float) 0.5, (float) 0.5,
                 CropTransformation.GravityHorizontal.CENTER,
@@ -225,7 +225,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             .into(holder.image);
         break;
       case CropQuarterBottomRight:
-        Picasso.with(mContext)
+        Picasso.get()
             .load(R.drawable.demo)
             .transform(new CropTransformation((float) 0.5, (float) 0.5,
                 CropTransformation.GravityHorizontal.RIGHT,
@@ -233,7 +233,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             .into(holder.image);
         break;
       case CropHalfWidth43CenterCenter:
-        Picasso.with(mContext)
+        Picasso.get()
             .load(R.drawable.demo)
             .transform(new CropTransformation((float) 0.5, 0, (float) 4 / (float) 3,
                 CropTransformation.GravityHorizontal.CENTER,
@@ -241,99 +241,99 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             .into(holder.image);
         break;
       case CropSquare:
-        Picasso.with(mContext)
+        Picasso.get()
             .load(R.drawable.demo)
             .transform(new CropSquareTransformation())
             .into(holder.image);
         break;
       case CropCircle:
-        Picasso.with(mContext)
+        Picasso.get()
             .load(R.drawable.demo)
             .transform(new CropCircleTransformation())
             .into(holder.image);
         break;
       case ColorFilter:
-        Picasso.with(mContext)
+        Picasso.get()
             .load(R.drawable.demo)
             .transform(new ColorFilterTransformation(Color.argb(80, 255, 0, 0)))
             .into(holder.image);
         break;
       case Grayscale:
-        Picasso.with(mContext)
+        Picasso.get()
             .load(R.drawable.demo)
             .transform(new GrayscaleTransformation())
             .into(holder.image);
         break;
       case RoundedCorners:
-        Picasso.with(mContext)
+        Picasso.get()
             .load(R.drawable.demo)
             .transform(new RoundedCornersTransformation(30, 0,
                 RoundedCornersTransformation.CornerType.BOTTOM_LEFT))
             .into(holder.image);
         break;
       case Blur:
-        Picasso.with(mContext)
+        Picasso.get()
             .load(R.drawable.check)
             .transform(new BlurTransformation(mContext, 25, 1))
             .into(holder.image);
         break;
       case Toon:
-        Picasso.with(mContext)
+        Picasso.get()
             .load(R.drawable.demo)
             .transform(new ToonFilterTransformation(mContext))
             .into(holder.image);
         break;
       case Sepia:
-        Picasso.with(mContext)
+        Picasso.get()
             .load(R.drawable.check)
             .transform(new SepiaFilterTransformation(mContext))
             .into(holder.image);
         break;
       case Contrast:
-        Picasso.with(mContext)
+        Picasso.get()
             .load(R.drawable.check)
             .transform(new ContrastFilterTransformation(mContext, 2.0f))
             .into(holder.image);
         break;
       case Invert:
-        Picasso.with(mContext)
+        Picasso.get()
             .load(R.drawable.check)
             .transform(new InvertFilterTransformation(mContext))
             .into(holder.image);
         break;
       case Pixel:
-        Picasso.with(mContext)
+        Picasso.get()
             .load(R.drawable.check)
             .transform(new PixelationFilterTransformation(mContext, 20))
             .into(holder.image);
         break;
       case Sketch:
-        Picasso.with(mContext)
+        Picasso.get()
             .load(R.drawable.check)
             .transform(new SketchFilterTransformation(mContext))
             .into(holder.image);
         break;
       case Swirl:
-        Picasso.with(mContext)
+        Picasso.get()
             .load(R.drawable.check)
             .transform(new SwirlFilterTransformation(mContext, 0.5f, 1.0f, new PointF(0.5f, 0.5f)))
             .into(holder.image);
 
         break;
       case Brightness:
-        Picasso.with(mContext)
+        Picasso.get()
             .load(R.drawable.check)
             .transform(new BrightnessFilterTransformation(mContext, 0.5f))
             .into(holder.image);
         break;
       case Kuawahara:
-        Picasso.with(mContext)
+        Picasso.get()
             .load(R.drawable.check)
             .transform(new KuwaharaFilterTransformation(mContext, 25))
             .into(holder.image);
         break;
       case Vignette:
-        Picasso.with(mContext)
+        Picasso.get()
             .load(R.drawable.check)
             .transform(new VignetteFilterTransformation(mContext, new PointF(0.5f, 0.5f),
                 new float[] { 0.0f, 0.0f, 0.0f }, 0f, 0.75f))

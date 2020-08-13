@@ -3,7 +3,6 @@ apply plugin: 'com.novoda.bintray-release'
 
 android {
   compileSdkVersion COMPILE_SDK_VERSION as int
-  buildToolsVersion BUILD_TOOLS_VERSION
 
   defaultConfig {
     minSdkVersion MIN_SDK_VERSION as int

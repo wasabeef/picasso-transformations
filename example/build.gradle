@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 
 android {
   compileSdkVersion COMPILE_SDK_VERSION as int
-  buildToolsVersion BUILD_TOOLS_VERSION
 
   defaultConfig {
     minSdkVersion MIN_SDK_VERSION as int
@@ -56,7 +55,7 @@ dependencies {
   implementation project(':transformations')
   implementation "com.squareup.picasso:picasso:${PICASSO_VERSION}"
   implementation "jp.co.cyberagent.android.gpuimage:gpuimage-library:${GPUIMAGE_VERSION}"
-  implementation "com.android.support:appcompat-v7:${SUPPORT_PACKAGE_VERSION}"
-  implementation "com.android.support:recyclerview-v7:${SUPPORT_PACKAGE_VERSION}"
-  implementation 'com.android.support.constraint:constraint-layout:1.1.0-beta4'
+  implementation 'androidx.appcompat:appcompat:1.0.0'
+  implementation 'androidx.recyclerview:recyclerview:1.0.0'
+  implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 }

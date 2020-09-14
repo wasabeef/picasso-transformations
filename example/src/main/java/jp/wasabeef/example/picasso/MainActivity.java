@@ -1,16 +1,20 @@
 package jp.wasabeef.example.picasso;
 
 import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import jp.wasabeef.example.picasso.MainAdapter.Type;
 
 public class MainActivity extends AppCompatActivity {
 
-  @Override protected void onCreate(Bundle savedInstanceState) {
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 

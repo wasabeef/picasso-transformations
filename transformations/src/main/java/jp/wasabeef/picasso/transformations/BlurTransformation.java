@@ -2,13 +2,13 @@ package jp.wasabeef.picasso.transformations;
 
 /**
  * Copyright (C) 2018 Wasabeef
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * <p>
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -22,19 +22,21 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.os.Build;
 import android.renderscript.RSRuntimeException;
+
 import com.squareup.picasso.Transformation;
+
 import jp.wasabeef.picasso.transformations.internal.FastBlur;
 import jp.wasabeef.picasso.transformations.internal.RSBlur;
 
 public class BlurTransformation implements Transformation {
 
-  private static int MAX_RADIUS = 25;
-  private static int DEFAULT_DOWN_SAMPLING = 1;
+  private static final int MAX_RADIUS = 25;
+  private static final int DEFAULT_DOWN_SAMPLING = 1;
 
-  private Context mContext;
+  private final Context mContext;
 
-  private int mRadius;
-  private int mSampling;
+  private final int mRadius;
+  private final int mSampling;
 
   public BlurTransformation(Context context) {
     this(context, MAX_RADIUS, DEFAULT_DOWN_SAMPLING);
@@ -50,7 +52,8 @@ public class BlurTransformation implements Transformation {
     mSampling = sampling;
   }
 
-  @Override public Bitmap transform(Bitmap source) {
+  @Override
+  public Bitmap transform(Bitmap source) {
 
     int scaledWidth = source.getWidth() / mSampling;
     int scaledHeight = source.getHeight() / mSampling;
@@ -78,7 +81,8 @@ public class BlurTransformation implements Transformation {
     return bitmap;
   }
 
-  @Override public String key() {
+  @Override
+  public String key() {
     return "BlurTransformation(radius=" + mRadius + ", sampling=" + mSampling + ")";
   }
 }

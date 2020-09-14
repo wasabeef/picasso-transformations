@@ -2,13 +2,13 @@ package jp.wasabeef.picasso.transformations;
 
 /**
  * Copyright (C) 2018 Wasabeef
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * <p>
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -22,6 +22,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Shader;
+
 import com.squareup.picasso.Transformation;
 
 public class RoundedCornersTransformation implements Transformation {
@@ -34,10 +35,10 @@ public class RoundedCornersTransformation implements Transformation {
     DIAGONAL_FROM_TOP_LEFT, DIAGONAL_FROM_TOP_RIGHT
   }
 
-  private int mRadius;
-  private int mDiameter;
-  private int mMargin;
-  private CornerType mCornerType;
+  private final int mRadius;
+  private final int mDiameter;
+  private final int mMargin;
+  private final CornerType mCornerType;
 
   public RoundedCornersTransformation(int radius, int margin) {
     this(radius, margin, CornerType.ALL);
@@ -50,7 +51,8 @@ public class RoundedCornersTransformation implements Transformation {
     mCornerType = cornerType;
   }
 
-  @Override public Bitmap transform(Bitmap source) {
+  @Override
+  public Bitmap transform(Bitmap source) {
 
     int width = source.getWidth();
     int height = source.getHeight();
@@ -125,111 +127,112 @@ public class RoundedCornersTransformation implements Transformation {
 
   private void drawTopLeftRoundRect(Canvas canvas, Paint paint, float right, float bottom) {
     canvas.drawRoundRect(new RectF(mMargin, mMargin, mMargin + mDiameter, mMargin + mDiameter),
-        mRadius, mRadius, paint);
+      mRadius, mRadius, paint);
     canvas.drawRect(new RectF(mMargin, mMargin + mRadius, mMargin + mRadius, bottom), paint);
     canvas.drawRect(new RectF(mMargin + mRadius, mMargin, right, bottom), paint);
   }
 
   private void drawTopRightRoundRect(Canvas canvas, Paint paint, float right, float bottom) {
     canvas.drawRoundRect(new RectF(right - mDiameter, mMargin, right, mMargin + mDiameter), mRadius,
-        mRadius, paint);
+      mRadius, paint);
     canvas.drawRect(new RectF(mMargin, mMargin, right - mRadius, bottom), paint);
     canvas.drawRect(new RectF(right - mRadius, mMargin + mRadius, right, bottom), paint);
   }
 
   private void drawBottomLeftRoundRect(Canvas canvas, Paint paint, float right, float bottom) {
     canvas.drawRoundRect(new RectF(mMargin, bottom - mDiameter, mMargin + mDiameter, bottom),
-        mRadius, mRadius, paint);
+      mRadius, mRadius, paint);
     canvas.drawRect(new RectF(mMargin, mMargin, mMargin + mDiameter, bottom - mRadius), paint);
     canvas.drawRect(new RectF(mMargin + mRadius, mMargin, right, bottom), paint);
   }
 
   private void drawBottomRightRoundRect(Canvas canvas, Paint paint, float right, float bottom) {
     canvas.drawRoundRect(new RectF(right - mDiameter, bottom - mDiameter, right, bottom), mRadius,
-        mRadius, paint);
+      mRadius, paint);
     canvas.drawRect(new RectF(mMargin, mMargin, right - mRadius, bottom), paint);
     canvas.drawRect(new RectF(right - mRadius, mMargin, right, bottom - mRadius), paint);
   }
 
   private void drawTopRoundRect(Canvas canvas, Paint paint, float right, float bottom) {
     canvas.drawRoundRect(new RectF(mMargin, mMargin, right, mMargin + mDiameter), mRadius, mRadius,
-        paint);
+      paint);
     canvas.drawRect(new RectF(mMargin, mMargin + mRadius, right, bottom), paint);
   }
 
   private void drawBottomRoundRect(Canvas canvas, Paint paint, float right, float bottom) {
     canvas.drawRoundRect(new RectF(mMargin, bottom - mDiameter, right, bottom), mRadius, mRadius,
-        paint);
+      paint);
     canvas.drawRect(new RectF(mMargin, mMargin, right, bottom - mRadius), paint);
   }
 
   private void drawLeftRoundRect(Canvas canvas, Paint paint, float right, float bottom) {
     canvas.drawRoundRect(new RectF(mMargin, mMargin, mMargin + mDiameter, bottom), mRadius, mRadius,
-        paint);
+      paint);
     canvas.drawRect(new RectF(mMargin + mRadius, mMargin, right, bottom), paint);
   }
 
   private void drawRightRoundRect(Canvas canvas, Paint paint, float right, float bottom) {
     canvas.drawRoundRect(new RectF(right - mDiameter, mMargin, right, bottom), mRadius, mRadius,
-        paint);
+      paint);
     canvas.drawRect(new RectF(mMargin, mMargin, right - mRadius, bottom), paint);
   }
 
   private void drawOtherTopLeftRoundRect(Canvas canvas, Paint paint, float right, float bottom) {
     canvas.drawRoundRect(new RectF(mMargin, bottom - mDiameter, right, bottom), mRadius, mRadius,
-        paint);
+      paint);
     canvas.drawRoundRect(new RectF(right - mDiameter, mMargin, right, bottom), mRadius, mRadius,
-        paint);
+      paint);
     canvas.drawRect(new RectF(mMargin, mMargin, right - mRadius, bottom - mRadius), paint);
   }
 
   private void drawOtherTopRightRoundRect(Canvas canvas, Paint paint, float right, float bottom) {
     canvas.drawRoundRect(new RectF(mMargin, mMargin, mMargin + mDiameter, bottom), mRadius, mRadius,
-        paint);
+      paint);
     canvas.drawRoundRect(new RectF(mMargin, bottom - mDiameter, right, bottom), mRadius, mRadius,
-        paint);
+      paint);
     canvas.drawRect(new RectF(mMargin + mRadius, mMargin, right, bottom - mRadius), paint);
   }
 
   private void drawOtherBottomLeftRoundRect(Canvas canvas, Paint paint, float right, float bottom) {
     canvas.drawRoundRect(new RectF(mMargin, mMargin, right, mMargin + mDiameter), mRadius, mRadius,
-        paint);
+      paint);
     canvas.drawRoundRect(new RectF(right - mDiameter, mMargin, right, bottom), mRadius, mRadius,
-        paint);
+      paint);
     canvas.drawRect(new RectF(mMargin, mMargin + mRadius, right - mRadius, bottom), paint);
   }
 
   private void drawOtherBottomRightRoundRect(Canvas canvas, Paint paint, float right,
-      float bottom) {
+                                             float bottom) {
     canvas.drawRoundRect(new RectF(mMargin, mMargin, right, mMargin + mDiameter), mRadius, mRadius,
-        paint);
+      paint);
     canvas.drawRoundRect(new RectF(mMargin, mMargin, mMargin + mDiameter, bottom), mRadius, mRadius,
-        paint);
+      paint);
     canvas.drawRect(new RectF(mMargin + mRadius, mMargin + mRadius, right, bottom), paint);
   }
 
   private void drawDiagonalFromTopLeftRoundRect(Canvas canvas, Paint paint, float right,
-      float bottom) {
+                                                float bottom) {
     canvas.drawRoundRect(new RectF(mMargin, mMargin, mMargin + mDiameter, mMargin + mDiameter),
-        mRadius, mRadius, paint);
+      mRadius, mRadius, paint);
     canvas.drawRoundRect(new RectF(right - mDiameter, bottom - mDiameter, right, bottom), mRadius,
-        mRadius, paint);
+      mRadius, paint);
     canvas.drawRect(new RectF(mMargin, mMargin + mRadius, right - mDiameter, bottom), paint);
     canvas.drawRect(new RectF(mMargin + mDiameter, mMargin, right, bottom - mRadius), paint);
   }
 
   private void drawDiagonalFromTopRightRoundRect(Canvas canvas, Paint paint, float right,
-      float bottom) {
+                                                 float bottom) {
     canvas.drawRoundRect(new RectF(right - mDiameter, mMargin, right, mMargin + mDiameter), mRadius,
-        mRadius, paint);
+      mRadius, paint);
     canvas.drawRoundRect(new RectF(mMargin, bottom - mDiameter, mMargin + mDiameter, bottom),
-        mRadius, mRadius, paint);
+      mRadius, mRadius, paint);
     canvas.drawRect(new RectF(mMargin, mMargin, right - mRadius, bottom - mRadius), paint);
     canvas.drawRect(new RectF(mMargin + mRadius, mMargin + mRadius, right, bottom), paint);
   }
 
-  @Override public String key() {
+  @Override
+  public String key() {
     return "RoundedTransformation(radius=" + mRadius + ", margin=" + mMargin + ", diameter="
-        + mDiameter + ", cornerType=" + mCornerType.name() + ")";
+      + mDiameter + ", cornerType=" + mCornerType.name() + ")";
   }
 }

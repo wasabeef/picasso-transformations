@@ -2,13 +2,13 @@ package jp.wasabeef.picasso.transformations;
 
 /**
  * Copyright (C) 2018 Wasabeef
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * <p>
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -23,14 +23,16 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.drawable.Drawable;
+
 import com.squareup.picasso.Transformation;
+
 import jp.wasabeef.picasso.transformations.internal.Utils;
 
 public class MaskTransformation implements Transformation {
 
-  private static Paint mMaskingPaint = new Paint();
-  private Context mContext;
-  private int mMaskId;
+  private static final Paint mMaskingPaint = new Paint();
+  private final Context mContext;
+  private final int mMaskId;
 
   static {
     mMaskingPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
@@ -46,7 +48,8 @@ public class MaskTransformation implements Transformation {
     mMaskId = maskId;
   }
 
-  @Override public Bitmap transform(Bitmap source) {
+  @Override
+  public Bitmap transform(Bitmap source) {
     int width = source.getWidth();
     int height = source.getHeight();
 
@@ -64,8 +67,9 @@ public class MaskTransformation implements Transformation {
     return result;
   }
 
-  @Override public String key() {
+  @Override
+  public String key() {
     return "MaskTransformation(maskId=" + mContext.getResources().getResourceEntryName(mMaskId)
-        + ")";
+      + ")";
   }
 }

@@ -2,13 +2,13 @@ package jp.wasabeef.picasso.transformations.gpu;
 
 /**
  * Copyright (C) 2018 Wasabeef
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * <p>
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -18,8 +18,10 @@ package jp.wasabeef.picasso.transformations.gpu;
 
 import android.content.Context;
 import android.graphics.PointF;
+
 import java.util.Arrays;
-import jp.co.cyberagent.android.gpuimage.GPUImageVignetteFilter;
+
+import jp.co.cyberagent.android.gpuimage.filter.GPUImageVignetteFilter;
 
 /**
  * Performs a vignetting effect, fading out the image at the edges
@@ -28,17 +30,17 @@ import jp.co.cyberagent.android.gpuimage.GPUImageVignetteFilter;
  */
 public class VignetteFilterTransformation extends GPUFilterTransformation {
 
-  private PointF mCenter;
-  private float[] mVignetteColor;
-  private float mVignetteStart;
-  private float mVignetteEnd;
+  private final PointF mCenter;
+  private final float[] mVignetteColor;
+  private final float mVignetteStart;
+  private final float mVignetteEnd;
 
   public VignetteFilterTransformation(Context context) {
-    this(context, new PointF(0.5f, 0.5f), new float[] { 0.0f, 0.0f, 0.0f }, 0.0f, 0.75f);
+    this(context, new PointF(0.5f, 0.5f), new float[]{0.0f, 0.0f, 0.0f}, 0.0f, 0.75f);
   }
 
   public VignetteFilterTransformation(Context context, PointF center, float[] color, float start,
-      float end) {
+                                      float end) {
     super(context, new GPUImageVignetteFilter());
     mCenter = center;
     mVignetteColor = color;
@@ -51,9 +53,10 @@ public class VignetteFilterTransformation extends GPUFilterTransformation {
     filter.setVignetteEnd(mVignetteEnd);
   }
 
-  @Override public String key() {
+  @Override
+  public String key() {
     return "VignetteFilterTransformation(center=" + mCenter.toString() +
-        ",color=" + Arrays.toString(mVignetteColor) +
-        ",start=" + mVignetteStart + ",end=" + mVignetteEnd + ")";
+      ",color=" + Arrays.toString(mVignetteColor) +
+      ",start=" + mVignetteStart + ",end=" + mVignetteEnd + ")";
   }
 }

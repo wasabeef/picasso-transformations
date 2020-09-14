@@ -2,13 +2,13 @@ package jp.wasabeef.picasso.transformations;
 
 /**
  * Copyright (C) 2018 Wasabeef, molexx
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * <p>
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -20,6 +20,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.util.Log;
+
 import com.squareup.picasso.Transformation;
 
 /**
@@ -93,7 +94,7 @@ public class CropTransformation implements Transformation {
    * @param gravityVertical position of the cropped area within the larger source image
    */
   public CropTransformation(int width, int height, GravityHorizontal gravityHorizontal,
-      GravityVertical gravityVertical) {
+                            GravityVertical gravityVertical) {
     mWidth = width;
     mHeight = height;
     mGravityHorizontal = gravityHorizontal;
@@ -127,7 +128,7 @@ public class CropTransformation implements Transformation {
    * @param gravityVertical position of the cropped area within the larger source image
    */
   public CropTransformation(float widthRatio, float heightRatio,
-      GravityHorizontal gravityHorizontal, GravityVertical gravityVertical) {
+                            GravityHorizontal gravityHorizontal, GravityVertical gravityVertical) {
     mWidthRatio = widthRatio;
     mHeightRatio = heightRatio;
     mGravityHorizontal = gravityHorizontal;
@@ -168,7 +169,7 @@ public class CropTransformation implements Transformation {
    * @param gravityVertical position of the cropped area within the larger source image
    */
   public CropTransformation(int width, int height, float aspectRatio,
-      GravityHorizontal gravityHorizontal, GravityVertical gravityVertical) {
+                            GravityHorizontal gravityHorizontal, GravityVertical gravityVertical) {
     mWidth = width;
     mHeight = height;
     mAspectRatio = aspectRatio;
@@ -200,7 +201,7 @@ public class CropTransformation implements Transformation {
    * @param gravityVertical position of the cropped area within the larger source image
    */
   public CropTransformation(float widthRatio, float heightRatio, float aspectRatio,
-      GravityHorizontal gravityHorizontal, GravityVertical gravityVertical) {
+                            GravityHorizontal gravityHorizontal, GravityVertical gravityVertical) {
     mWidthRatio = widthRatio;
     mHeightRatio = heightRatio;
     mAspectRatio = aspectRatio;
@@ -218,13 +219,14 @@ public class CropTransformation implements Transformation {
    * @param gravityVertical position of the cropped area within the larger source image
    */
   public CropTransformation(float aspectRatio, GravityHorizontal gravityHorizontal,
-      GravityVertical gravityVertical) {
+                            GravityVertical gravityVertical) {
     mAspectRatio = aspectRatio;
     mGravityHorizontal = gravityHorizontal;
     mGravityVertical = gravityVertical;
   }
 
-  @Override public Bitmap transform(Bitmap source) {
+  @Override
+  public Bitmap transform(Bitmap source) {
     if (Log.isLoggable(TAG, Log.VERBOSE)) Log.v(TAG, "transform(): called, " + key());
 
     if (mWidth == 0 && mWidthRatio != 0) {
@@ -240,7 +242,7 @@ public class CropTransformation implements Transformation {
 
         if (Log.isLoggable(TAG, Log.VERBOSE)) {
           Log.v(TAG,
-              "transform(): mAspectRatio: " + mAspectRatio + ", sourceRatio: " + sourceRatio);
+            "transform(): mAspectRatio: " + mAspectRatio + ", sourceRatio: " + sourceRatio);
         }
 
         if (sourceRatio > mAspectRatio) {
@@ -254,7 +256,7 @@ public class CropTransformation implements Transformation {
 
       if (Log.isLoggable(TAG, Log.VERBOSE)) {
         Log.v(TAG, "transform(): before setting other of h/w: mAspectRatio: " + mAspectRatio
-            + ", set one of width: " + mWidth + ", height: " + mHeight);
+          + ", set one of width: " + mWidth + ", height: " + mHeight);
       }
 
       if (mWidth != 0) {
@@ -267,8 +269,8 @@ public class CropTransformation implements Transformation {
 
       if (Log.isLoggable(TAG, Log.VERBOSE)) {
         Log.v(TAG,
-            "transform(): mAspectRatio: " + mAspectRatio + ", set width: " + mWidth + ", height: "
-                + mHeight);
+          "transform(): mAspectRatio: " + mAspectRatio + ", set width: " + mWidth + ", height: "
+            + mHeight);
       }
     }
 
@@ -292,8 +294,8 @@ public class CropTransformation implements Transformation {
 
     if (Log.isLoggable(TAG, Log.VERBOSE)) {
       Log.v(TAG,
-          "transform(): created sourceRect with mLeft: " + mLeft + ", mTop: " + mTop + ", right: "
-              + (mLeft + mWidth) + ", bottom: " + (mTop + mHeight));
+        "transform(): created sourceRect with mLeft: " + mLeft + ", mTop: " + mTop + ", right: "
+          + (mLeft + mWidth) + ", bottom: " + (mTop + mHeight));
     }
     if (Log.isLoggable(TAG, Log.VERBOSE)) {
       Log.v(TAG, "transform(): created targetRect with width: " + mWidth + ", height: " + mHeight);
@@ -303,7 +305,7 @@ public class CropTransformation implements Transformation {
     Canvas canvas = new Canvas(bitmap);
     if (Log.isLoggable(TAG, Log.VERBOSE)) {
       Log.v(TAG, "transform(): copying from source with width: " + source.getWidth() + ", height: "
-          + source.getHeight());
+        + source.getHeight());
     }
     canvas.drawBitmap(source, sourceRect, targetRect, null);
 
@@ -311,17 +313,18 @@ public class CropTransformation implements Transformation {
 
     if (Log.isLoggable(TAG, Log.VERBOSE)) {
       Log.v(TAG, "transform(): returning bitmap with width: " + bitmap.getWidth() + ", height: "
-          + bitmap.getHeight());
+        + bitmap.getHeight());
     }
 
     return bitmap;
   }
 
-  @Override public String key() {
+  @Override
+  public String key() {
     return "CropTransformation(width=" + mWidth + ", height=" + mHeight + ", mWidthRatio="
-        + mWidthRatio + ", mHeightRatio=" + mHeightRatio + ", mAspectRatio=" + mAspectRatio
-        + ", gravityHorizontal=" + mGravityHorizontal + ", mGravityVertical=" + mGravityVertical
-        + ")";
+      + mWidthRatio + ", mHeightRatio=" + mHeightRatio + ", mAspectRatio=" + mAspectRatio
+      + ", gravityHorizontal=" + mGravityHorizontal + ", mGravityVertical=" + mGravityVertical
+      + ")";
   }
 
   private int getTop(Bitmap source) {

@@ -18,6 +18,7 @@ package jp.wasabeef.picasso.transformations;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
@@ -34,6 +35,9 @@ public class ColorFilterTransformation implements Transformation {
 
   @Override
   public Bitmap transform(Bitmap source) {
+    if (mColor == Color.TRANSPARENT) {
+      return source;
+    }
 
     int width = source.getWidth();
     int height = source.getHeight();

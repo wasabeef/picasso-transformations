@@ -40,8 +40,8 @@ public class MaskTransformation implements Transformation {
 
   /**
    * @param maskId If you change the mask file, please also rename the mask file, or Glide will get
-   * the cache with the old mask. Because getId() return the same values if using the
-   * same make file name. If you have a good idea please tell us, thanks.
+   *               the cache with the old mask. Because getId() return the same values if using the
+   *               same make file name. If you have a good idea please tell us, thanks.
    */
   public MaskTransformation(Context context, int maskId) {
     mContext = context.getApplicationContext();

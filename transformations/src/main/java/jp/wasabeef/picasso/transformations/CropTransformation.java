@@ -1,7 +1,7 @@
 package jp.wasabeef.picasso.transformations;
 
 /**
- * Copyright (C) 2018 Wasabeef, molexx
+ * Copyright (C) 2020 Wasabeef, molexx
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

@@ -1,7 +1,13 @@
 Change Log
 ==========
 
-Version 2.3.0 *(2020-08-15)*
+Version 2.3.1 *(2020-09-19)*
+----------------------------
+
+Bug Fix:
+- Fix param of drawDiagonalFromTopLeftRoundRect
+
+Version 2.3.0 *(2020-09-15)*
 ----------------------------
 
 Update:

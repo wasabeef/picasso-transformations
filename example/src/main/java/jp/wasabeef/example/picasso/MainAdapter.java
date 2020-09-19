@@ -273,8 +273,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
       case RoundedCorners:
         Picasso.get()
           .load(R.drawable.demo)
-          .transform(new RoundedCornersTransformation(30, 0,
-            RoundedCornersTransformation.CornerType.BOTTOM_LEFT))
+          .transform(new RoundedCornersTransformation(120, 0,
+            RoundedCornersTransformation.CornerType.DIAGONAL_FROM_TOP_LEFT))
           .into(holder.image);
         break;
       case Blur:

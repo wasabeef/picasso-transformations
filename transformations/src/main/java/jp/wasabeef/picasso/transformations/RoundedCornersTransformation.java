@@ -216,8 +216,8 @@ public class RoundedCornersTransformation implements Transformation {
       mRadius, mRadius, paint);
     canvas.drawRoundRect(new RectF(right - mDiameter, bottom - mDiameter, right, bottom), mRadius,
       mRadius, paint);
-    canvas.drawRect(new RectF(mMargin, mMargin + mRadius, right - mDiameter, bottom), paint);
-    canvas.drawRect(new RectF(mMargin + mDiameter, mMargin, right, bottom - mRadius), paint);
+    canvas.drawRect(new RectF(mMargin, mMargin + mRadius, right - mRadius, bottom), paint);
+    canvas.drawRect(new RectF(mMargin + mRadius, mMargin, right, bottom - mRadius), paint);
   }
 
   private void drawDiagonalFromTopRightRoundRect(Canvas canvas, Paint paint, float right,

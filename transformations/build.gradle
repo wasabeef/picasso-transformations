@@ -22,7 +22,7 @@ ext {
   publishedGroupId = 'jp.wasabeef'
   libraryName = 'picasso-transformations'
   artifact = 'picasso-transformations'
-  libraryDescription = 'Which provides simple Tranformations to Picasso'
+  libraryDescription = 'Which provides simple Transformations to Picasso'
   siteUrl = 'https://github.com/wasabeef/picasso-transformations'
   gitUrl = 'https://github.com/wasabeef/picasso-transformations.git'
   issueUrl = 'https://github.com/wasabeef/picasso-transformations/issues'

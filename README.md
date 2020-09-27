@@ -32,9 +32,9 @@ repositories {
 }
 
 dependencies {
-    compile 'jp.wasabeef:picasso-transformations:2.3.1'
+    compile 'jp.wasabeef:picasso-transformations:2.x.x'
     // If you want to use the GPU Filters
-    compile 'jp.co.cyberagent.android:gpuimage:2.0.4'
+    compile 'jp.co.cyberagent.android:gpuimage:2.1.0
 }
 ```
 

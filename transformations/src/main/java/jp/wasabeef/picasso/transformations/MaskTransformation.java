@@ -26,8 +26,6 @@ import android.graphics.drawable.Drawable;
 
 import com.squareup.picasso.Transformation;
 
-import jp.wasabeef.picasso.transformations.internal.Utils;
-
 public class MaskTransformation implements Transformation {
 
   private static final Paint mMaskingPaint = new Paint();
@@ -55,7 +53,7 @@ public class MaskTransformation implements Transformation {
 
     Bitmap result = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
 
-    Drawable mask = Utils.getMaskDrawable(mContext, mMaskId);
+    Drawable mask = mContext.getDrawable(mMaskId);
 
     Canvas canvas = new Canvas(result);
     mask.setBounds(0, 0, width, height);

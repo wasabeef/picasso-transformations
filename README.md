@@ -2,7 +2,7 @@ Picasso Transformations
 ======================
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-picasso--transformations-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1372)
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
-[![Download](https://api.bintray.com/packages/wasabeef/maven/picasso-transformations/images/download.svg)](https://bintray.com/wasabeef/maven/picasso-transformations/_latestVersion)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/jp.wasabeef/picasso-transformations/badge.svg)](https://search.maven.org/artifact/jp.wasabeef/picasso-transformations)
 
 An Android transformation library providing a variety of image transformations for [Picasso](https://github.com/square/picasso).
 
@@ -28,11 +28,11 @@ Please feel free to use this.
 #### Gradle
 ```groovy
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
-    compile 'jp.wasabeef:picasso-transformations:2.x.x'
+    compile 'jp.wasabeef:picasso-transformations:2.4.0'
     // If you want to use the GPU Filters
     compile 'jp.co.cyberagent.android:gpuimage:2.1.0
 }
